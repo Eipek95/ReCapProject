@@ -8,16 +8,18 @@ using Entities.Concrete;
 //ColorTest();
 //BrandTest();
 
-CarManager carManager = new CarManager(new EfCarDal());
-foreach (var carDetails in carManager.GetCarDetails())
-{
-    Console.WriteLine("Açıklama: "+carDetails.Description+" Renk: "+carDetails.ColorName+" Marka: "+carDetails.BriandName);
-}
+//ResultGetCarDetailsTest();
+
+//ResultGetCustomerTest();
+
+RentalAddTest();
+
+//GetRentalDetail();
 static void CarTest()
 {
     CarManager carManager = new CarManager(new EfCarDal());
     Console.WriteLine("id----BrandId----ColorId----DailyPrice----ModelYear----Description");
-    foreach (var cars in carManager.GetAll())
+    foreach (var cars in carManager.GetAll().Data)
     {
         Console.WriteLine("{0}----{1}----{2}----{3}----{4}----{5}",
             cars.Id, cars.BrandId, cars.ColorId, cars.DailyPrice, cars.ModelYear, cars.Description);
@@ -26,12 +28,12 @@ static void CarTest()
 
 
     Console.WriteLine("Get_Cars_By_Brand_Id=1");
-    foreach (var carBrand in carManager.GetCarsByBrandId(1))
+    foreach (var carBrand in carManager.GetCarsByBrandId(1).Data)
     {
         Console.WriteLine(carBrand.DailyPrice + " " + carBrand.Description + " " + carBrand.ModelYear);
     }
     Console.WriteLine("Get_Cars_By_Color_Id=1");
-    foreach (var carBrand in carManager.GetCarsByColorId(1))
+    foreach (var carBrand in carManager.GetCarsByColorId(1).Data)
     {
         Console.WriteLine(carBrand.DailyPrice + " " + carBrand.Description + " " + carBrand.ModelYear);
     }
@@ -40,7 +42,7 @@ static void CarTest()
 static void ColorTest()
 {
     ColorManager colorManager = new ColorManager(new EfColorDal());
-    foreach (var colors in colorManager.GetColors())
+    foreach (var colors in colorManager.GetColors().Data)
     {
         Console.WriteLine(colors.Id);
     }
@@ -49,11 +51,55 @@ static void ColorTest()
 static void BrandTest()
 {
     BrandManager brandManager = new BrandManager(new EfBrandDal());
-    foreach (var brands in brandManager.GetBrands())
+    foreach (var brands in brandManager.GetBrands().Data)
     {
         Console.WriteLine(brands.Id);
     }
 }
+
+static void ResultGetCarDetailsTest()
+{
+    CarManager carManager = new CarManager(new EfCarDal());
+    Console.WriteLine(carManager.GetAll().Message);
+    foreach (var carDetails in carManager.GetCarDetails().Data)
+    {
+        Console.WriteLine("Açıklama: " + carDetails.Description + " Renk: " + carDetails.ColorName + " Marka: " + carDetails.BriandName);
+    }
+}
+
+static void ResultGetCustomerTest()
+{
+    CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+    foreach (var customer in customerManager.GetCustomerDetails().Data)
+    {
+        Console.WriteLine(customer.Id + "/" + customer.CustomerName + "/" + customer.CustomerSurName + "/" + customer.CustomerMail + " " + customer.Company);
+    }
+}
+
+static void RentalAddTest()
+{
+    RentalManager rentalManager = new RentalManager(new EfRentalDal());
+    Console.WriteLine( rentalManager.AddRental(new Rental
+    {
+        CarId = 2,
+        CustomerId = 1,
+        RentDate = new DateTime(2022, 8, 22),
+        ReturnDate = null
+    }).Message
+    );
+}
+
+static void GetRentalDetail()
+{
+    RentalManager rentalManager = new RentalManager(new EfRentalDal());
+    foreach (var rentalDetail in rentalManager.GetRentalDetail().Data)
+    {
+        Console.WriteLine(rentalDetail.id + " " + rentalDetail.CustomerName + " " + rentalDetail.CustomerSurname + " " + rentalDetail.CarName + " " + rentalDetail.RentalDate.ToShortDateString() + " " + rentalDetail.ReturnDate);
+    }
+}
+
+
+
 #region oldCodes
 //foreach (var car in carManager.GetCars())
 //{
@@ -110,5 +156,21 @@ static void BrandTest()
 
 //}
 #endregion
+//CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+//customerManager.AddCustomer(new Customer
+//{
+//    UserId = 1,
+//    CompanyName = "Software Center"
+//});
+
+//UserManager userManager = new UserManager(new EfUserDal());
+//userManager.AddUser(
+//    new User
+//    {
+//        FirstName="Emre",
+//        LastName="İpek",
+//        Email="deneme@gmail.com",
+//        Password="123456"
+//    });
 
 

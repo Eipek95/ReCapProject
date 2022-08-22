@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core3.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -18,14 +19,15 @@ namespace Business.Concrete
             _colorDal = colorDal;
         }
 
-        public void AddColor(Color color)
+        public IResult AddColor(Color color)
         {
             _colorDal.Add(color);
+            return new Result(true,"Renk Eklendi");
         }
 
-        public List<Color> GetColors()
+        public IDataResult<List<Color>> GetColors()
         {
-            return _colorDal.GetAll();
+            return new SuccessDataResult<List<Color>>(_colorDal.GetAll());  
         }
     }
 }

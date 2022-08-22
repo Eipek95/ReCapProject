@@ -1,5 +1,6 @@
 ﻿using Core3.Utilities.Results;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface IColorService
+    public interface IRentalService
     {
-        IResult AddColor(Color color);
-        IDataResult<List<Color>> GetColors();
+        IResult AddRental(Rental rental);
+        IDataResult<List<RentalDetailDto>> GetRentalDetail();
     }
 }
