@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,7 +32,35 @@ namespace Business.Concrete
             _carDal.Add(car);
             return new Result(true,Messages.CarAdded);
         }
+        public IResult UpdateCar(Car car)
+        {
+            var result = _carDal.GetAll().Where(x => x.Id == car.Id).FirstOrDefault();
+            if (result!=null)
+            {
+                result.BrandId = car.BrandId;
+                result.ColorId = car.ColorId;
+                result.DailyPrice = car.DailyPrice;
+                result.Description = car.Description;
+                result.ModelYear = car.ModelYear;
+                _carDal.Update(result);
+                return new Result(true, Messages.CarUpdated);
+            }
+            else
+            {
+                return new ErrorResult(Messages.CarNameInvalid);
+            }
+        }
 
+        public IResult DeleteCar(Car car)
+        {
+            var result = _carDal.GetAll().Where(x => x.Id == car.Id).FirstOrDefault();
+            if (result != null)
+            {
+                _carDal.Delete(result);
+                return new Result(true, Messages.CarDeleted);
+            }
+            return new ErrorResult(Messages.CarNameInvalid);
+        }
         public IDataResult<List<Car>> GetAll()
         {
             if (_carDal.GetAll().Count==0)
