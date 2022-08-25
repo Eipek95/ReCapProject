@@ -12,7 +12,7 @@ using Entities.Concrete;
 
 //ResultGetCustomerTest();
 
-//RentalAddTest();
+RentalAddTest();
 
 //GetRentalDetail();
 static void CarTest()
@@ -81,7 +81,7 @@ static void RentalAddTest()
     RentalManager rentalManager = new RentalManager(new EfRentalDal());
     Console.WriteLine( rentalManager.AddRental(new Rental
     {
-        CarId = 2,
+        CarId = 4,
         CustomerId = 1,
         RentDate = new DateTime(2022, 8, 22),
         ReturnDate = null
