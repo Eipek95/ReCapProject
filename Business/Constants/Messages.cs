@@ -31,5 +31,28 @@ namespace Business.Constants
         public static string RentalListed = "Rentals've been listed";
         public static string RentalIsNotAdded = "Car cannot rental because of it is not returned";
         public static string RentalIsNotFount = "Car is not found";
+
+
+
+        public static string ImageAdded = "Fotoğraf Eklendi!";
+        public static string ImageDeleted = "Fotoğraf Silindi!";
+        public static string ImageUpdated = "Fotoğraf Güncellendi!";
+        public static string ImageGetAll = "Fotoğraflar Listelendi!";
+        public static string ImageNotFound = "Fotoğraf Bulunamadı!";
+        public static string ImageError = "Fotoğraf Eklenemedi!";
+        public static string ImageGetById = "Fotoğraf ID Bilgisine Göre Getirildi!";
+
+
+
+        public static string MaintenanceTime = "Sistem Bakımda!";
+        public static string ErrorMessage = "Hata!";
+        public static string AuthorizationDenied = "Yetkiniz Yok!";
+        public static string UserRegistered = "Kayıt Başarılı!";
+        public static string UserNotFound = "Kullanıcı Bulunamadı!";
+        public static string SuccessfulLogin = "Giriş Başarılı!";
+        public static string PasswordError = "Hatalı Şifre!";
+        public static string AccessTokenCreated = "Access Token Created!";
+        public static string GetClaimMessage = "Claims Listed!";
+        public static string GetByMail = "Claims Listed with Mail!";
     }
 }

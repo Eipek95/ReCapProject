@@ -12,7 +12,9 @@ using Entities.Concrete;
 
 //ResultGetCustomerTest();
 
-RentalAddTest();
+//RentalAddTest();
+
+
 
 //GetRentalDetail();
 static void CarTest()
