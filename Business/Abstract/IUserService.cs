@@ -1,5 +1,5 @@
-﻿using Core3.Utilities.Results;
-using Entities.Concrete;
+﻿using Core3.Entities.Concrete;
+using Core3.Utilities.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +10,8 @@ namespace Business.Abstract
 {
     public interface IUserService
     {
-        IResult AddUser(User user);
+        List<OperationClaim> GetClaims(User user);
+        void Add(User user);
+        User GetByMail(string email);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Business.Abstract;
+using Core3.Entities.Concrete;
 using Core3.Utilities.Results;
 using DataAccess.Abstract;
-using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,10 +19,20 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
-        public IResult AddUser(User user)
+        public void Add(User user)
         {
             _userDal.Add(user);
-            return new Result(true,"Müşteri başarıyla eklendi");
+
+        }
+        public User GetByMail(string email)
+        {
+            return _userDal.Get(u => u.Email == email);
+        }
+
+        public List<OperationClaim> GetClaims(User user)
+        {
+            return _userDal.GetClaims(user);
+
         }
     }
 }

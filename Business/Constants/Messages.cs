@@ -54,5 +54,8 @@ namespace Business.Constants
         public static string AccessTokenCreated = "Access Token Created!";
         public static string GetClaimMessage = "Claims Listed!";
         public static string GetByMail = "Claims Listed with Mail!";
+
+
+        public static string UserAlreadyExists="Kullanıcı Zaten Mevcut";
     }
 }
