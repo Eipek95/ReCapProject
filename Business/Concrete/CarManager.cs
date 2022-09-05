@@ -63,7 +63,7 @@ namespace Business.Concrete
             }
             return new ErrorResult(Messages.CarNameInvalid);
         }
-        [CacheAspect]
+        //[CacheAspect]
         public IDataResult<List<Car>> GetAll()
         {
             if (_carDal.GetAll().Count==0)

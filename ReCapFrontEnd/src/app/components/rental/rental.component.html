@@ -1,0 +1,25 @@
+<table class="table table-success table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Car Name</th>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Customer Surname</th>
+        <th scope="col">Rental Date</th>
+        <th scope="col">Return Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rental of rentals">
+        <td>{{ rental.id }}</td>
+        <td>{{ rental.carName }}</td>
+        <td>{{ rental.customerName }}</td>
+        <td>{{ rental.customerSurname }}</td>
+        <td>{{ rental.rentalDate }}</td>
+        <td *ngIf="!rental.returnDate; else noEmpty">-</td>
+        <ng-template #noEmpty>
+          <td>{{rental.returnDate}}</td>
+        </ng-template>
+      </tr>
+    </tbody>
+  </table>
