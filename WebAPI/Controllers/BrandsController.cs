@@ -14,5 +14,19 @@ namespace WebAPI.Controllers
         {
             _brandService = brandService;
         }
+
+        [HttpGet("getbrand")]
+        public IActionResult GetBrand()
+        {
+            var result = _brandService.GetBrands();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
+        }
     }
 }
