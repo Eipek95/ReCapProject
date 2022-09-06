@@ -95,5 +95,10 @@ namespace DataAccess.Concrete.InMermory
         {
             throw new NotImplementedException();
         }
+
+        public List<BrandDetailDto> GetCarByBrandIdDetails()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

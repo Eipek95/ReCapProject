@@ -88,5 +88,10 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll().Where(x => x.ColorId == id).ToList());
         }
+
+        public IDataResult<List<BrandDetailDto>> GetCarByBrandIdDetails(int brandId)
+        {
+            return new SuccessDataResult<List<BrandDetailDto>>(_carDal.GetCarByBrandIdDetails().Where(x=>x.brandId==brandId).ToList());
+        }
     }
 }

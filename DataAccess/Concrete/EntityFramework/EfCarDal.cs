@@ -1,4 +1,5 @@
 ﻿using Core3.DataAccess.EntityFramework;
+using Core3.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -30,6 +31,26 @@ namespace DataAccess.Concrete.EntityFramework
                                BriandName = b.Name,
                                Description = c.Description
                            };
+                return result.ToList();
+            }
+        }
+
+        public List<BrandDetailDto> GetCarByBrandIdDetails()
+        {
+            using (ReCapDBContext context = new ReCapDBContext())
+            {
+                var result = from c in context.Cars
+                             join b in context.Brands
+                             on c.BrandId equals b.Id
+                             select new BrandDetailDto
+                             {
+                                 carId =c.Id,
+                                 brandId=c.BrandId,
+                                 CarName = c.Description,
+                                 CarModelYear = c.ModelYear,
+                                 CarDescription = c.Description,
+                                 CarDailyPrice = c.DailyPrice
+                             };
                 return result.ToList();
             }
         }

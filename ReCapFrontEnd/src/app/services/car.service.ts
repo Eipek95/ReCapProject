@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CarService {
 
-  private apiUrl='https://localhost:7199/api/Cars/getcar';
+  private apiUrl='https://localhost:7199/api/Cars/getcardetails';
   constructor(private httpClient:HttpClient) { }
 
 

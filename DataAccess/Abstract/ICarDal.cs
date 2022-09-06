@@ -1,4 +1,5 @@
 ﻿using Core3.DataAccess;
+using Core3.Utilities.Results;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
@@ -12,5 +13,7 @@ namespace DataAccess.Abstract
     public  interface ICarDal:IEntityRepository<Car>
     {
         List<CarDetailDto> GetCarDetails();
+        List<BrandDetailDto> GetCarByBrandIdDetails();
+
     }
 }

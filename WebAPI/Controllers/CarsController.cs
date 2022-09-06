@@ -36,7 +36,7 @@ namespace WebAPI.Controllers
             var result = _carService.GetCarDetails();
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
             else
             {
@@ -106,6 +106,20 @@ namespace WebAPI.Controllers
             if (result.Success)
             {
                 return Ok(result.Message);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
+        }
+
+        [HttpGet("getcardetailbybrandid")]
+        public IActionResult GetBrandById(int brandId)
+        {
+            var result = _carService.GetCarByBrandIdDetails(brandId);
+            if (result.Success)
+            {
+                return Ok(result);
             }
             else
             {
