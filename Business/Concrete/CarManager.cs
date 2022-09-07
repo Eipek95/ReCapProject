@@ -93,5 +93,9 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<BrandDetailDto>>(_carDal.GetCarByBrandIdDetails().Where(x=>x.brandId==brandId).ToList());
         }
+        public IDataResult<List<BrandDetailDto>> GetCarByBrandIdDetailssss()
+        {
+            return new SuccessDataResult<List<BrandDetailDto>>(_carDal.GetCarByBrandIdDetails().ToList());
+        }
     }
 }
