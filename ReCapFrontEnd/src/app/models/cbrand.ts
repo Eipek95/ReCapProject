@@ -1,8 +1,7 @@
 export interface Cbrand{
+    id:number,//brand_id
     carId:number,
-    brandId:number,
     carName:string,
     carModelYear:number,
-    carDailyPrice:number,
-    carDescription:string
+    carDailyPrice:number
 }

@@ -5,16 +5,14 @@
         <th scope="col">Name</th>
         <th scope="col">Model Year</th>
         <th scope="col">Daily Price</th>
-        <th scope="col">Description</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let cbrand of cbrands">
-        <td>{{ cbrand.brandId }}</td>
+        <td>{{ cbrand.id }}</td>
         <td>{{ cbrand.carName }}</td>
         <td>{{ cbrand.carModelYear }}</td>
         <td>{{ cbrand.carDailyPrice }}</td>
-        <td>{{ cbrand.carDescription }}</td>
       </tr>
     </tbody>
   </table>
