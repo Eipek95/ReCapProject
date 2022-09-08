@@ -12,6 +12,7 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { CbrandComponent } from './components/cbrand/cbrand.component';
 import { CarcolorComponent } from './components/carcolor/carcolor.component';
+import { CarimageComponent } from './components/carimage/carimage.component';
 
 
 
@@ -26,7 +27,8 @@ import { CarcolorComponent } from './components/carcolor/carcolor.component';
     CustomerComponent,
     RentalComponent,
     CbrandComponent,
-    CarcolorComponent
+    CarcolorComponent,
+    CarimageComponent
   ],
   imports: [
     BrowserModule,

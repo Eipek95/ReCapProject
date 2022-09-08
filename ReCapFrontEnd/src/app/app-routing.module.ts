@@ -9,7 +9,7 @@ const routes: Routes = [//<app-route> çlıştığı yer
 {path:"",component:CarComponent},
 { path: "cars", component: CbrandComponent },
 { path: 'cars/brand/:id', component: CbrandComponent },
-{ path: 'cars/color/:colorId', component: CarcolorComponent }
+{ path: 'carcolor/:colorId', component: CarcolorComponent }
 
 ];
 
