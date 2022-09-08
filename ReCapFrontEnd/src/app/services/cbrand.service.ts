@@ -12,8 +12,8 @@ export class CbrandService {
   constructor(private httpClient:HttpClient) { }
 
   getCbrands():Observable<ListResponseModel<Cbrand>>{
-    let newPath=this.apiUrl+"Cars/getcardetailbybrand"
-    return this.httpClient.get<ListResponseModel<Cbrand>>(this.apiUrl);
+    let newPath=this.apiUrl+"Cars/getcardetailbybrandgetall"
+    return this.httpClient.get<ListResponseModel<Cbrand>>(newPath);
   }
 
   getCarsByBrand(id:number):Observable<ListResponseModel<Cbrand>>{
