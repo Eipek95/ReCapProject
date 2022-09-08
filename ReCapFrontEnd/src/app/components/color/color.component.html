@@ -1,14 +1,7 @@
-<table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let color of colors">
-        <td>{{ color.id }}</td>
-        <td>{{ color.name }}</td>
-      </tr>
-    </tbody>
-  </table>
+<ul class="list-group">
+  
+  <li (click)="setCurrentColor(color)" 
+  routerLink="/cars/color/{{color.id}}"
+  *ngFor="let color of colors"
+   [class]="getCurrentColorClass(color)">{{ color.name }}</li>
+</ul>

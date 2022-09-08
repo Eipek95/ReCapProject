@@ -100,5 +100,10 @@ namespace DataAccess.Concrete.InMermory
         {
             throw new NotImplementedException();
         }
+
+        public List<ColorDetailDto> GetCarByColorIdDetails()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
