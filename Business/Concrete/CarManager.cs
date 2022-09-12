@@ -10,6 +10,7 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.ConstrainedExecution;
@@ -64,19 +65,14 @@ namespace Business.Concrete
             return new ErrorResult(Messages.CarNameInvalid);
         }
         //[CacheAspect]
-        public IDataResult<List<Car>> GetAll()
+        public IDataResult<List<CarDetailDto>> GetAll()
         {
             if (_carDal.GetAll().Count==0)
             {
-                return new ErrorDataResult<List<Car>>(message:"Görüntülencek Araç yok");
+                return new ErrorDataResult<List<CarDetailDto>>(message:"Görüntülencek Araç yok");
             }
             
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(),Messages.CarsListed);
-        }
-
-        public IDataResult<List<CarDetailDto>> GetCarDetails()
-        {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(),Messages.CarsListed);
         }
 
         public IDataResult<List<Car>> GetCarsByBrandId(int id)
@@ -101,6 +97,11 @@ namespace Business.Concrete
         public IDataResult<List<ColorDetailDto>> GetCarByColorIdDetails(int colorId)
         {
             return new SuccessDataResult<List<ColorDetailDto>>(_carDal.GetCarByColorIdDetails().Where(x=>x.colorId==colorId).ToList());
+        }
+
+        public IDataResult<CarDetailDto> GetCarDetails(int carId)
+        {
+            return new SuccessDataResult<CarDetailDto>(_carDal.GetCarDetails(c => c.Id == carId).SingleOrDefault());
         }
     }
 }

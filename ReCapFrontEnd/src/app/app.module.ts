@@ -13,6 +13,8 @@ import { RentalComponent } from './components/rental/rental.component';
 import { CbrandComponent } from './components/cbrand/cbrand.component';
 import { CarcolorComponent } from './components/carcolor/carcolor.component';
 import { CarimageComponent } from './components/carimage/carimage.component';
+import { CardetailComponent } from './components/cardetail/cardetail.component';
+
 
 
 
@@ -28,7 +30,8 @@ import { CarimageComponent } from './components/carimage/carimage.component';
     RentalComponent,
     CbrandComponent,
     CarcolorComponent,
-    CarimageComponent
+    CarimageComponent,
+    CardetailComponent
   ],
   imports: [
     BrowserModule,

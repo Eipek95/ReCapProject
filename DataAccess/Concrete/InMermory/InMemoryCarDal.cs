@@ -105,5 +105,10 @@ namespace DataAccess.Concrete.InMermory
         {
             throw new NotImplementedException();
         }
+
+        public List<CarDetailDto> GetCarDetails(Expression<Func<CarDetailDto, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

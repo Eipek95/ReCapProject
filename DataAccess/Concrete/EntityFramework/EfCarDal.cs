@@ -15,23 +15,45 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfCarDal : EfEntityRepositoryBase<Car, ReCapDBContext>, ICarDal
     {
-        public List<CarDetailDto> GetCarDetails()
+        public List<CarDetailDto> GetCarDetails(Expression<Func<CarDetailDto, bool>> filter = null)
         {
             using (ReCapDBContext context = new ReCapDBContext())
             {
                 var result = from c in context.Cars
-                             join x in context.Colors
-                             on c.ColorId equals x.Id
                              join b in context.Brands
                              on c.BrandId equals b.Id
-                           select new CarDetailDto
-                           {
-                               Id = c.Id,
-                               ColorName = x.Name,
-                               BriandName = b.Name,
-                               Description = c.Description
-                           };
-                return result.ToList();
+                             join co in context.Colors
+                             on c.ColorId equals co.Id
+                             select new CarDetailDto
+                             {
+                                 Id = c.Id,
+                                 BriandName = b.Name,
+                                 ColorName = co.Name,
+                                 Description=c.Description,
+                                 DailyPrice= c.DailyPrice,
+                                 CarImages = ((from ci in context.CarImages
+                                               where (c.Id == ci.CarId)
+                                               select new CarImage
+                                               {
+                                                   Id = ci.Id,
+                                                   CarId = ci.CarId,
+                                                   Date = ci.Date,
+                                                   ImagePath = ci.ImagePath
+                                               }).ToList()).Count == 0
+                                                    ? new List<CarImage> { new CarImage { Id = -1, CarId = c.Id, Date = DateTime.Now, ImagePath = "/images/default.jpg" } }
+                                                    : (from ci in context.CarImages
+                                                       where (c.Id == ci.CarId)
+                                                       select new CarImage
+                                                       {
+                                                           Id = ci.Id,
+                                                           CarId = ci.CarId,
+                                                           Date = ci.Date,
+                                                           ImagePath = ci.ImagePath
+                                                       }).ToList()
+                             };
+                return filter == null
+                    ? result.ToList()
+                    :result.Where(filter).ToList();
             }
         }
 
@@ -44,8 +66,8 @@ namespace DataAccess.Concrete.EntityFramework
                              on c.BrandId equals b.Id
                              select new BrandDetailDto
                              {
-                                 carId =c.Id,
-                                 id=c.BrandId,
+                                 carId = c.Id,
+                                 id = c.BrandId,
                                  CarName = c.Description,
                                  CarModelYear = c.ModelYear,
                                  CarDailyPrice = c.DailyPrice
@@ -63,14 +85,15 @@ namespace DataAccess.Concrete.EntityFramework
                              on c.ColorId equals x.Id
                              select new ColorDetailDto
                              {
-                                 id=c.Id,
-                                 colorId=x.Id,
-                                 CarName=c.Description,
-                                 CarDailyPrice=c.DailyPrice,
-                                 CarModelYear=c.ModelYear
+                                 id = c.Id,
+                                 colorId = x.Id,
+                                 CarName = c.Description,
+                                 CarDailyPrice = c.DailyPrice,
+                                 CarModelYear = c.ModelYear
                              };
                 return result.ToList();
             }
         }
+
     }
 }
