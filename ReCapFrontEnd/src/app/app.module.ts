@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,11 @@ import { CbrandComponent } from './components/cbrand/cbrand.component';
 import { CarcolorComponent } from './components/carcolor/carcolor.component';
 import { CarimageComponent } from './components/carimage/carimage.component';
 import { CardetailComponent } from './components/cardetail/cardetail.component';
+import { FilterPipePipe } from './pipes/filter-pipe.pipe';
+
+import { CarFilterPipe } from './pipes/car-filter.pipe';
+import { ColorFilterPipe } from './pipes/color-filter.pipe';
+import { BrandFilterPipe } from './pipes/brand-filter.pipe';
 
 
 
@@ -31,12 +37,17 @@ import { CardetailComponent } from './components/cardetail/cardetail.component';
     CbrandComponent,
     CarcolorComponent,
     CarimageComponent,
-    CardetailComponent
+    CardetailComponent,
+    FilterPipePipe,
+    CarFilterPipe,
+    ColorFilterPipe,
+    BrandFilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

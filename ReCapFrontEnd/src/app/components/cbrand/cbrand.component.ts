@@ -10,6 +10,7 @@ import { CbrandService } from 'src/app/services/cbrand.service';
 })
 export class CbrandComponent implements OnInit {
   cbrands: Cbrand[] = [];
+  filterText="";
   constructor(
     private cbrandService: CbrandService,
     private activatedRoute: ActivatedRoute

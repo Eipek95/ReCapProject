@@ -1,3 +1,4 @@
+<!--
 <ul class="list-group">
   
   <li (click)="setCurrentColor(color)" 
@@ -5,3 +6,34 @@
   *ngFor="let color of colors"
    [class]="getCurrentColorClass(color)">{{ color.name }}</li>
 </ul>
+-->
+<div class="mb-3">
+  <label for="filterText" class="form-label">Renk  Ara</label>
+  <input
+    type="text"
+    [(ngModel)]="filterText"
+    class="form-control"
+    id="filterText"
+    placeholder="arama ifadesini giriniz"
+  />
+</div>
+<div *ngIf="filterText" class="alert alert-success">
+  {{filterText}} aradınız
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Renk Adı</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr (click)="setCurrentColor(color)" 
+    routerLink="/carcolor/{{color.id}}"
+    *ngFor="let color of colors | colorFilter:filterText">
+      <th>{{color.id}}</th>
+      <td>{{color.name}}</td>
+    </tr>
+  </tbody>
+</table>

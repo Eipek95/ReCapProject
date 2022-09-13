@@ -3,7 +3,7 @@
         <div style="padding-right: 20px;" class="col-8 " >
           <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1800" *ngIf="carImage">
             <div class="carousel-inner" >
-              <div class="carousel-item {{getActiveString(carImage)}} " *ngFor="let carImage of carImage" >
+              <div class="carousel-item {{getActiveString(carImage)}} " *ngFor="let carImage of carImage " >
                 <img [src]="getImage(carImage)"  class="d-block w-100 rounded-3 "  alt="..."  height="400px">
               </div>
             </div>

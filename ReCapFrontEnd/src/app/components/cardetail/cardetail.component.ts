@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class CardetailComponent implements OnInit {
   carDetails: CarDetailDto;
   carImage: Carimage[];
+  filterText="";
   constructor(
     private carService: CarService,
     private carImageService: CarimageService,
