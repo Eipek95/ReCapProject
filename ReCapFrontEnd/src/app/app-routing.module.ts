@@ -7,17 +7,17 @@ import { CarimageComponent } from './components/carimage/carimage.component';
 import { CbrandComponent } from './components/cbrand/cbrand.component';
 import { ColorComponent } from './components/color/color.component';
 
-
-const routes: Routes = [//<app-route> çlıştığı yer
-{path:"",component:CarComponent},
-{ path: "cars", component: CbrandComponent },
-{ path: 'cars/brand/:id', component: CbrandComponent },
-{ path: 'carcolor/:colorId', component: CarcolorComponent },
-{path:"cardetail/:carId",component:CardetailComponent}
+const routes: Routes = [
+  //<app-route> çlıştığı yer
+  { path: '', component: CarComponent },
+  { path: 'cars', component: CbrandComponent },
+  { path: 'cars/brand/:id', component: CbrandComponent },
+  { path: 'cars/color/:colorId', component: CarcolorComponent },
+  { path: 'cardetail/:carId', component: CardetailComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

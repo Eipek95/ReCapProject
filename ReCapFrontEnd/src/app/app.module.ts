@@ -20,6 +20,8 @@ import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import { CarFilterPipe } from './pipes/car-filter.pipe';
 import { ColorFilterPipe } from './pipes/color-filter.pipe';
 import { BrandFilterPipe } from './pipes/brand-filter.pipe';
+import { BrandSelectOptionFilterComponent } from './components/brand-select-option-filter/brand-select-option-filter.component';
+import { ColorSelectOptionFilterComponent } from './components/color-select-option-filter/color-select-option-filter.component';
 
 
 
@@ -41,7 +43,9 @@ import { BrandFilterPipe } from './pipes/brand-filter.pipe';
     FilterPipePipe,
     CarFilterPipe,
     ColorFilterPipe,
-    BrandFilterPipe
+    BrandFilterPipe,
+    BrandSelectOptionFilterComponent,
+    ColorSelectOptionFilterComponent
   ],
   imports: [
     BrowserModule,
