@@ -6,6 +6,7 @@ import { CardetailComponent } from './components/cardetail/cardetail.component';
 import { CarimageComponent } from './components/carimage/carimage.component';
 import { CbrandComponent } from './components/cbrand/cbrand.component';
 import { ColorComponent } from './components/color/color.component';
+import { DenemeComponent } from './components/deneme/deneme.component';
 
 const routes: Routes = [
   //<app-route> çlıştığı yer
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'cars/brand/:id', component: CbrandComponent },
   { path: 'cars/color/:colorId', component: CarcolorComponent },
   { path: 'cardetail/:carId', component: CardetailComponent },
+  { path: 'deneme', component: DenemeComponent }
 ];
 
 @NgModule({

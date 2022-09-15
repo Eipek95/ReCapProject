@@ -56,6 +56,20 @@ namespace Business.Constants
         public static string GetByMail = "Claims Listed with Mail!";
 
 
-        public static string UserAlreadyExists="Kullanıcı Zaten Mevcut";
+        public static string UserAlreadyExists = "Kullanıcı Zaten Mevcut";
+        public static string CreditCardNotValid = "Kredi Kartı Geçersiz";
+        public static string CreditCardListed = "Kredi Kartı Listelendi";
+        public static string CreditCardNotFound = "Kredi Kartı Bulunamadı";
+
+        public static string StringMustConsistOfNumbersOnly = "String, sadece sayilardan olusmalidir";
+        public static string InsufficientCardBalance = "Kart bakiyesi yetersiz";
+        public static string PaymentSuccessful= "Odeme basariyla tamamlandi";
+        public static string CustomersCreditCardsListed= "Müsterinin kredi kartlari listelendi";
+        public static string CustomerCreditCardAlreadySaved= "Kredi karti zaten kaydedilmis";
+        public static string CustomerCreditCardSaved= "Müsteri kredi karti basariyla kaydedildi";
+        public static string CustomerCreditCardFailedToSave= "Müsteri kredi karti kaydedilemedi";
+        public static string CustomerCreditCardDeleted= "Musteri kredi karti basariyla silindi";
+        public static string CustomerCreditCardNotDeleted= "Musteri kredi karti silinemedi";
+        public static string CustomerCreditCardNotFound= "Müsteri kredi karti bulunamadi";
     }
 }
