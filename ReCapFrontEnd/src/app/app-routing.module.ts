@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { CarAddComponent } from './components/car-add/car-add.component';
 import { CarComponent } from './components/car/car.component';
 import { CarcolorComponent } from './components/carcolor/carcolor.component';
 import { CardetailComponent } from './components/cardetail/cardetail.component';
 import { CarimageComponent } from './components/carimage/carimage.component';
 import { CbrandComponent } from './components/cbrand/cbrand.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
 import { ColorComponent } from './components/color/color.component';
-import { DenemeComponent } from './components/deneme/deneme.component';
+
 
 const routes: Routes = [
   //<app-route> çlıştığı yer
@@ -15,7 +18,9 @@ const routes: Routes = [
   { path: 'cars/brand/:id', component: CbrandComponent },
   { path: 'cars/color/:colorId', component: CarcolorComponent },
   { path: 'cardetail/:carId', component: CardetailComponent },
-  { path: 'deneme', component: DenemeComponent }
+  { path: 'brandadd', component: BrandAddComponent },
+  { path: 'coloradd', component: ColorAddComponent },
+  { path: 'caradd', component: CarAddComponent },
 ];
 
 @NgModule({

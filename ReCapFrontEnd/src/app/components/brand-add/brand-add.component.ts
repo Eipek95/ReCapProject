@@ -8,18 +8,19 @@ import {
 import { ToastrService } from 'ngx-toastr';
 import { BrandService } from 'src/app/services/brand.service';
 @Component({
-  selector: 'app-deneme',
-  templateUrl: './deneme.component.html',
-  styleUrls: ['./deneme.component.css'],
+  selector: 'app-brand-add',
+  templateUrl: './brand-add.component.html',
+  styleUrls: ['./brand-add.component.css']
 })
-export class DenemeComponent implements OnInit {
+export class BrandAddComponent implements OnInit {
   brandAddForm: FormGroup;
-
   constructor(
     private formBuilder: FormBuilder,
     private brandService: BrandService,
     private toastrService: ToastrService
-  ) {}
+  ) { 
+    
+  }
 
   ngOnInit(): void {
     this.createBrandAddForm();

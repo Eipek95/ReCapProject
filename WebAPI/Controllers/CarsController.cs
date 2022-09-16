@@ -79,11 +79,11 @@ namespace WebAPI.Controllers
             var result = _carService.AddCar(car);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(result);
             }
             else
             {
-                return BadRequest(result.Message);
+                return BadRequest(result);
             }
         }
         [HttpPost("updatecars")]

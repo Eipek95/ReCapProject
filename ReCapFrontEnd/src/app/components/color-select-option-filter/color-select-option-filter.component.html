@@ -1,11 +1,16 @@
-<br>
-<br>
-<div style="width: 200px;display: inline-block;">
-    <select   class="form-select " [(ngModel)]="currentColorId">
-      <option value="undefined">Renk Seç</option>
-      <option *ngFor="let color of colors" [value]="color.id">
-          {{color.name}}
-      </option>
+<br />
+<br />
+<div style="width: 200px; display: inline-block">
+  <select class="form-select" [(ngModel)]="currentColorId">
+    <option value="undefined">Renk Seç</option>
+    <option *ngFor="let color of colors" [value]="color.id">
+      {{ color.name }}
+    </option>
   </select>
-  </div>
-  <button type="button" class="btn btn-outline-dark" (click)="routeToCarDetailsPageByColorId()">Listele</button>
+</div>
+<button
+  type="button"
+  class="btn btn-outline-dark"
+  (click)="routeToCarDetailsPageByColorId()">
+  Listele
+</button>

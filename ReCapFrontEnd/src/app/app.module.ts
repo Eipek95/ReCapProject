@@ -25,9 +25,9 @@ import { BrandFilterPipe } from './pipes/brand-filter.pipe';
 import { BrandSelectOptionFilterComponent } from './components/brand-select-option-filter/brand-select-option-filter.component';
 import { ColorSelectOptionFilterComponent } from './components/color-select-option-filter/color-select-option-filter.component';
 import { CaeDetailPipe } from './pipes/cae-detail.pipe';
-import { DenemeComponent } from './components/deneme/deneme.component';
-
-
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
+import { CarAddComponent } from './components/car-add/car-add.component';
 
 
 
@@ -51,7 +51,9 @@ import { DenemeComponent } from './components/deneme/deneme.component';
     BrandSelectOptionFilterComponent,
     ColorSelectOptionFilterComponent,
     CaeDetailPipe,
-    DenemeComponent
+    BrandAddComponent,
+    ColorAddComponent,
+    CarAddComponent
   ],
   imports: [
     BrowserModule,

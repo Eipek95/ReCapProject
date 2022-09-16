@@ -34,4 +34,5 @@ export class ColorSelectOptionFilterComponent implements OnInit {
   routeToCarDetailsPageByColorId() {
     this.routerService.carDetailsPageByColorId(this.currentColorId);
   }
+
 }
