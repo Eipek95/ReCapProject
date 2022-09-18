@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { CarimageComponent } from './components/carimage/carimage.component';
 import { CardetailComponent } from './components/cardetail/cardetail.component';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 
+
 import {ToastrModule} from "ngx-toastr";
 import { CarFilterPipe } from './pipes/car-filter.pipe';
 import { ColorFilterPipe } from './pipes/color-filter.pipe';
@@ -28,6 +30,8 @@ import { CaeDetailPipe } from './pipes/cae-detail.pipe';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
+import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
+import { BrandManagerComponent } from './components/brand-manager/brand-manager.component';
 
 
 
@@ -53,7 +57,9 @@ import { CarAddComponent } from './components/car-add/car-add.component';
     CaeDetailPipe,
     BrandAddComponent,
     ColorAddComponent,
-    CarAddComponent
+    CarAddComponent,
+    BrandUpdateComponent,
+    BrandManagerComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +67,7 @@ import { CarAddComponent } from './components/car-add/car-add.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MatDialogModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"

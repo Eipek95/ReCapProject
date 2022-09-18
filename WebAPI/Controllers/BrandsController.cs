@@ -43,6 +43,20 @@ namespace WebAPI.Controllers
                 return BadRequest(result.Message);
             }
         }
+
+        [HttpPost("updateBrand")]
+        public IActionResult UpdateBrand(Brand brand)
+        {
+            var result = _brandService.Update(brand);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
+        }
        
     }
 }

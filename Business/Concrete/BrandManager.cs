@@ -29,5 +29,11 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<Brand>>(_brandDal.GetAll().ToList());
         }
+
+        public IResult Update(Brand brand)
+        {
+            _brandDal.Update(brand);
+            return new Result(true, "Marka Başarıyla Güncellendi");
+        }
     }
 }
