@@ -32,6 +32,8 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
 import { BrandManagerComponent } from './components/brand-manager/brand-manager.component';
+import { ColorManagerComponent } from './components/color-manager/color-manager.component';
+import { ColorUpdateComponent } from './components/color-update/color-update.component';
 
 
 
@@ -59,7 +61,9 @@ import { BrandManagerComponent } from './components/brand-manager/brand-manager.
     ColorAddComponent,
     CarAddComponent,
     BrandUpdateComponent,
-    BrandManagerComponent
+    BrandManagerComponent,
+    ColorManagerComponent,
+    ColorUpdateComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,8 @@ import {
 import { ToastrService } from 'ngx-toastr';
 import { Color } from 'src/app/models/color';
 import { ColorService } from 'src/app/services/color.service';
+import { MatDialogRef } from '@angular/material/dialog';
+import { FormService } from 'src/app/services/form.service';
 
 @Component({
   selector: 'app-color-add',
@@ -17,25 +19,32 @@ import { ColorService } from 'src/app/services/color.service';
 export class ColorAddComponent implements OnInit {
   colorAddForm: FormGroup;
   constructor(
-    private formBuilder: FormBuilder,
     private colorService: ColorService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private colorAddModal: MatDialogRef<ColorAddComponent>,
+    private formService:FormService
   ) {}
 
   ngOnInit(): void {
     this.createColorAddForm();
   }
   createColorAddForm() {
-    this.colorAddForm = this.formBuilder.group({
-      name: ['', Validators.required],
-    });
+    this.colorAddForm = this.formService.createBrandForm();
+  }
+
+  closeColorAddModal() {
+    this.colorAddModal.close();
   }
   add() {
     if (this.colorAddForm.valid) {
       let colorModel = Object.assign({}, this.colorAddForm.value);
-      this.colorService.add(colorModel).subscribe((response) => {
-        this.toastrService.success(response.message, 'Başarılı');
-      });
+      this.colorService.add(colorModel).subscribe(() => {
+        this.toastrService.success(colorModel.name, "Renk başarıyla eklendi");
+        this.closeColorAddModal();
+      })
+    } else {
+      this.toastrService.error("Renk adı 2-50 karakter arasında olmalıdır", "Geçersiz form");
+      this.colorAddForm.reset();
     }
   }
 }

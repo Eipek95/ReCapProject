@@ -21,4 +21,8 @@ export class ColorService {
     let newPath = this.apiUrl + 'Colors/addcolor';
     return this.httpClient.post<ResponseModel>(newPath, color);
   }
+  update(color: Color): Observable<ResponseModel> {
+    let newPath: string = this.apiUrl + 'Colors/updateColor';
+    return this.httpClient.post<ResponseModel>(newPath, color);
+  }
 }

@@ -29,5 +29,11 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<Color>>(_colorDal.GetAll());  
         }
+
+        public IResult UpdateColor(Color color)
+        {
+            _colorDal.Update(color);
+            return new Result(true,"Başarıyla Güncellendi");
+        }
     }
 }

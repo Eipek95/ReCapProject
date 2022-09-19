@@ -12,4 +12,9 @@ export class FormService {
       name: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(50)]]
     });
   }
+  createColorForm():FormGroup{
+    return this.formBuilder.group({
+      name: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(50)]]
+    })
+  }
 }

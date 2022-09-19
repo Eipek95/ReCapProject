@@ -11,6 +11,7 @@ namespace Business.Abstract
     public interface IColorService
     {
         IResult AddColor(Color color);
+        IResult UpdateColor(Color color);
         IDataResult<List<Color>> GetColors();
     }
 }
