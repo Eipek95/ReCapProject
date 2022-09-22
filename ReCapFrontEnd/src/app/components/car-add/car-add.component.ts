@@ -5,12 +5,14 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { Color } from 'src/app/models/color';
 import { BrandService } from 'src/app/services/brand.service';
 import { CarService } from 'src/app/services/car.service';
 import { ColorService } from 'src/app/services/color.service';
+import { FormService } from 'src/app/services/form.service';
 @Component({
   selector: 'app-car-add',
   templateUrl: './car-add.component.html',
@@ -23,7 +25,8 @@ export class CarAddComponent implements OnInit {
   colors: Color[];
   brands: Brand[];
   constructor(
-    private formBuilder: FormBuilder,
+    private carAddModal: MatDialogRef<CarAddComponent>,
+    private formService:FormService,
     private carService: CarService,
     private toastrService: ToastrService,
     private colorService: ColorService,
@@ -36,14 +39,13 @@ export class CarAddComponent implements OnInit {
     this.getColors();
   }
   createCarAddForm() {
-    this.carAddForm = this.formBuilder.group({
-      brandId: [0, Validators.required],
-      colorId: [0,Validators.required],
-      modelYear: ['', Validators.required],
-      dailyPrice:['', Validators.required],
-      description: ['', Validators.required]
-    });
+    this.carAddForm = this.formService.createCarForm();
   }
+
+  closeBrandAddModal() {
+    this.carAddModal.close();
+  }
+
   getColors() {
     this.colorService.getColors().subscribe((response) => {
       this.colors = response.data;
@@ -54,14 +56,19 @@ export class CarAddComponent implements OnInit {
       this.brands = response.data;
     });
   }
+  
   add() {
     if (this.carAddForm.valid) {
       let carModel = Object.assign({}, this.carAddForm.value);
       carModel.colorId=this.currentColorId
       carModel.brandId=this.currentBrandId
-      this.carService.add(carModel).subscribe((response) => {
-        this.toastrService.success(response.message, 'Başarılı');
-      });
+      this.carService.add(carModel).subscribe(() => {
+        this.toastrService.success(carModel.name, "Araba başarıyla eklendi");
+        this.closeBrandAddModal();
+      })
+    } else {
+      this.toastrService.error("Araba adı 2-50 karakter arasında olmalıdır", "Geçersiz form");
+      this.carAddForm.reset();
     }
   }
 }

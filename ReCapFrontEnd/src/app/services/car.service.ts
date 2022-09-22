@@ -8,30 +8,43 @@ import { SingleResponseModel } from '../models/singleResponseModel';
 import { CarDetailDto } from '../models/cardetaildto';
 import { ResponseModel } from '../models/responseModel';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CarService {
+  private apiUrl = 'https://localhost:7199/api/';
+  constructor(private httpClient: HttpClient) {}
 
-  private apiUrl="https://localhost:7199/api/";
-  constructor(private httpClient:HttpClient) { }
+  getCars() {
+    let newPath = this.apiUrl + 'Cars/getallcars';
+    return this.httpClient.get<ListResponseModel<Car>>(newPath);
+  }
 
-  getCars(): Observable<ListResponseModel<CarDetailDto>> {
-   let newPath=this.apiUrl+"Cars/getcar";
+  getCar(id:number) :Observable<SingleResponseModel<Car>> {
+    let newPath=this.apiUrl+'Cars/getallcars?carId='+id;
+    return this.httpClient.get<SingleResponseModel<Car>>(newPath);
+  }
+  getCarDetail(): Observable<ListResponseModel<CarDetailDto>> {
+    let newPath = this.apiUrl + 'Cars/getcar';
     return this.httpClient.get<ListResponseModel<CarDetailDto>>(newPath);
   }
 
-
   getCarImagesByCarId(id: number): Observable<ListResponseModel<Carimage>> {
-    let newPath=this.apiUrl+"CarImages/getcardetailsbyid?id="+id
+    let newPath = this.apiUrl + 'CarImages/getcardetailsbyid?id=' + id;
     return this.httpClient.get<ListResponseModel<Carimage>>(newPath);
   }
 
   getCarDetailsByCarId(id: number): Observable<SingleResponseModel<CarDetailDto>> {
-    let carDetailPath = this.apiUrl + "Cars/getcardetailsbyid?id=" + id;
-    return this.httpClient.get<SingleResponseModel<CarDetailDto>>(carDetailPath);
+    let carDetailPath = this.apiUrl + 'Cars/getcardetailsbyid?id=' + id;
+    return this.httpClient.get<SingleResponseModel<CarDetailDto>>(
+      carDetailPath
+    );
   }
-  add(car: Car): Observable<ResponseModel> {
+  add(car: Car): Observable<SingleResponseModel<number>> {
     let newPath = this.apiUrl + 'Cars/addcars';
+    return this.httpClient.post<SingleResponseModel<number>>(newPath, car);
+  }
+  update(car: Car): Observable<ResponseModel> {
+    let newPath: string = this.apiUrl + 'Cars/updatecars';
     return this.httpClient.post<ResponseModel>(newPath, car);
   }
 }

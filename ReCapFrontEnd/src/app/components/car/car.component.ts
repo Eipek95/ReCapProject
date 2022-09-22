@@ -32,7 +32,7 @@ export class CarComponent implements OnInit {
   }
 
   getCarDetail() {
-    this.carService.getCars().subscribe((response) => {
+    this.carService.getCarDetail().subscribe((response) => {
       this.carDetailDtos = response.data;
     });
   }

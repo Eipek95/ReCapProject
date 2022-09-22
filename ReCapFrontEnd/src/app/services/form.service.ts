@@ -17,4 +17,13 @@ export class FormService {
       name: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(50)]]
     })
   }
+  createCarForm():FormGroup{
+    return this.formBuilder.group({
+      brandId: ['', Validators.required],
+      colorId: ['',Validators.required],
+      modelYear: ['', Validators.required],
+      dailyPrice:['', Validators.required],
+      description: ['', Validators.required]
+    })
+  }
 }

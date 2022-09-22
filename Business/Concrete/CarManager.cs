@@ -103,5 +103,15 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<CarDetailDto>(_carDal.GetCarDetails(c => c.Id == carId).SingleOrDefault());
         }
+
+        public IDataResult<List<Car>> GetCarAll(int carId)
+        {
+            if (_carDal.GetAll().Count == 0)
+            {
+                return new ErrorDataResult<List<Car>>(message: "Görüntülencek Araç yok");
+            }
+
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll().Where(x=>x.Id==carId).ToList(),Messages.CarsListed);
+        }
     }
 }

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Carimage } from '../models/carimage';
 import { ListResponseModel } from '../models/listResponseModel';
+import { ResponseModel } from '../models/responseModel';
 
 @Injectable({
   providedIn: 'root',
@@ -20,5 +21,13 @@ export class CarimageService {
   getCarsByImageId(carId:number):Observable<ListResponseModel<Carimage>>{
     let newPath=this.apiUrl+"/getbycarid?carId="+carId
     return this.httpClient.get<ListResponseModel<Carimage>>(newPath);
+  }
+
+  uploadImage(image:File,carId:number):Observable<ResponseModel>{
+    let newPath=this.apiUrl+'/addcarimage'
+    const sendForm=new FormData()
+    sendForm.append('carId',JSON.stringify(carId))
+    sendForm.append('carImage',image,image.name)
+    return this.httpClient.post<ResponseModel>(newPath,sendForm);
   }
 }

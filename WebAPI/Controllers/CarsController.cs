@@ -16,7 +16,21 @@ namespace WebAPI.Controllers
             _carService = carService;
         }
 
-        [HttpGet("getcar")]
+        [HttpGet("getallcars")]
+        public IActionResult GetCarAll(int carId)
+        {
+            var result = _carService.GetCarAll(carId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
+        }
+
+        [HttpGet("getcar")]//getdetail
         public IActionResult GetCar()
         {
             var result = _carService.GetAll();
@@ -92,7 +106,7 @@ namespace WebAPI.Controllers
             var result = _carService.UpdateCar(car);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(result);
             }
             else
             {

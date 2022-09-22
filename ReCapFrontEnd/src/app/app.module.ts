@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule,MatDialogRef  } from '@angular/material/dialog';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +35,9 @@ import { BrandUpdateComponent } from './components/brand-update/brand-update.com
 import { BrandManagerComponent } from './components/brand-manager/brand-manager.component';
 import { ColorManagerComponent } from './components/color-manager/color-manager.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
+import { CarManagerComponent } from './components/car-manager/car-manager.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
+
 
 
 
@@ -63,7 +67,10 @@ import { ColorUpdateComponent } from './components/color-update/color-update.com
     BrandUpdateComponent,
     BrandManagerComponent,
     ColorManagerComponent,
-    ColorUpdateComponent
+    ColorUpdateComponent,
+    CarManagerComponent,
+    CarUpdateComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -77,7 +84,12 @@ import { ColorUpdateComponent } from './components/color-update/color-update.com
       positionClass:"toast-bottom-right"
     })
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MatDialogRef ,
+      useValue: {}
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

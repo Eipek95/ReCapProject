@@ -4,6 +4,8 @@ import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { BrandManagerComponent } from './components/brand-manager/brand-manager.component';
 import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
+import { CarManagerComponent } from './components/car-manager/car-manager.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
 import { CarComponent } from './components/car/car.component';
 import { CarcolorComponent } from './components/carcolor/carcolor.component';
 import { CardetailComponent } from './components/cardetail/cardetail.component';
@@ -22,9 +24,10 @@ const routes: Routes = [
   { path: 'cars/color/:colorId', component: CarcolorComponent },
   { path: 'cardetail/:carId', component: CardetailComponent },
   { path: 'coloradd', component: ColorAddComponent },
-  { path: 'caradd', component: CarAddComponent },
+  { path: 'carmanager', component: CarManagerComponent },
   { path: 'brandmanager', component: BrandManagerComponent },
   { path: 'colormanager', component: ColorManagerComponent },
+    {path:"cars/car/:carId",component:CarUpdateComponent},
 ];
 
 @NgModule({
