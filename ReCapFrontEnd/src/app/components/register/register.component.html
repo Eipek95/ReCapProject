@@ -1,0 +1,46 @@
+<div class="card">
+    <div class="card-header">
+        <div class="d-flex justify-content-between">
+            <h5>Kayıt Ol</h5>
+        </div>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="registerAddForm">
+            <div class="align-items-center">
+                <div class="form-group">
+                  <input type="text" id="fname" formControlName="firstName" class="form-control"  placeholder="İsminiz"
+                />
+                </div>
+            </div>
+            <br>
+            <div class="align-items-center">
+              <div class="form-group">
+                <input type="text" id="lname"  formControlName="lastName" class="form-control" placeholder="Soyisminiz"
+                />
+              </div>
+          </div>
+          <br>
+          <div class="align-items-center">
+            <div class="form-group">
+              <input
+                  type="email"  id="email" formControlName="email" class="form-control" placeholder="Eposta"
+                />
+            </div>
+        </div>
+        <br>
+        <div class="align-items-center">
+            <div class="form-group">
+              <input
+                  type="password"  id="pw" formControlName="password" class="form-control" placeholder="Şifreniz"
+                />
+            </div>
+        </div>
+        </form>
+        <div class="row mt-3">
+            <div class="d-flex justify-content-end">
+                <button (click)="add()" type="button" class="btn btn-success me-2">Ekle</button>
+                <button (click)="closeRegisterAddModal()" type="button" class="btn btn-danger">İptal</button>
+            </div>
+        </div>
+    </div>
+  </div>

@@ -26,4 +26,20 @@ export class FormService {
       description: ['', Validators.required]
     })
   }
+  createDemoCarForm():FormGroup{
+    return this.formBuilder.group({
+      description: ['', Validators.required]
+    })
+  
+  }
+  createRegisterForm():FormGroup{
+    return this.formBuilder.group({
+      email:['', Validators.required],
+      password:['', Validators.required],
+      firstName:['', Validators.required],
+      lastName: ['', Validators.required]
+    })
+  
+  }
+  
 }

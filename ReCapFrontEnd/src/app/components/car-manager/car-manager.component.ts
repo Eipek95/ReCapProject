@@ -10,6 +10,7 @@ import { Car } from 'src/app/models/car';
 import { CarDetailDto } from 'src/app/models/cardetaildto';
 import { CarService } from 'src/app/services/car.service';
 import { CarAddComponent } from '../car-add/car-add.component';
+import { CarTestComponent } from '../car-test/car-test.component';
 import { CarUpdateComponent } from '../car-update/car-update.component';
 @Component({
   selector: 'app-car-manager',
@@ -18,6 +19,7 @@ import { CarUpdateComponent } from '../car-update/car-update.component';
 })
 export class CarManagerComponent implements OnInit {
   cars:CarDetailDto[]
+  currentCar:Car
   constructor(
     private carService:CarService,
     private dialog:MatDialog
@@ -31,14 +33,14 @@ export class CarManagerComponent implements OnInit {
       this.cars = response.data;
     })
   }
-  showCarUpdateModal(car: CarDetailDto) {
-    const carUpdateModal = this.dialog.open(CarUpdateComponent, {
+  showCarUpdateModal(car: Car) {
+    const brandUpdateModal = this.dialog.open(CarTestComponent, {
       disableClose: true,
       width: "30%"
     });
-   // carUpdateModal.componentInstance.currentCar = car;
+    brandUpdateModal.componentInstance.currentCar = car;
 
-    carUpdateModal.afterClosed().subscribe(result => {
+    brandUpdateModal.afterClosed().subscribe(result => {
       this.ngOnInit();
     })
   }

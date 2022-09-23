@@ -27,10 +27,6 @@
       <tr style="height:100px ;"  *ngFor="let carDetailDto of carDetailDtos | caeDetail:filterText">
         <td  style="width: 190px;border-right: 2px solid white;" class="rounded-2" > <img  [src]="getImage(carDetailDto)" width="190px" height="100px" > </td> 
           <td style="border-right: 2px solid white;" class="rounded-2"><button  routerLink="/cardetail/{{carDetailDto.id}}" class="btn btn-outline-secondary text-dark">{{carDetailDto.description}}</button>
-          <button
-            type="button"
-            class="btn btn-sm btn-outline-dark"
-            routerLink="/cars/car/{{carDetailDto.id}}"> Update</button>
           </td>
           <td style="border-right: 2px solid white;" class="rounded-2">{{carDetailDto.briandName}}</td>
           <td style="border-right: 2px solid white;" class="rounded-2">{{carDetailDto.colorName}}</td>

@@ -5,6 +5,7 @@ import { BrandManagerComponent } from './components/brand-manager/brand-manager.
 import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { CarManagerComponent } from './components/car-manager/car-manager.component';
+import { CarTestComponent } from './components/car-test/car-test.component';
 import { CarUpdateComponent } from './components/car-update/car-update.component';
 import { CarComponent } from './components/car/car.component';
 import { CarcolorComponent } from './components/carcolor/carcolor.component';
@@ -14,6 +15,9 @@ import { CbrandComponent } from './components/cbrand/cbrand.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { ColorManagerComponent } from './components/color-manager/color-manager.component';
 import { ColorComponent } from './components/color/color.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginGuard } from './guards/login.guard';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
@@ -24,10 +28,13 @@ const routes: Routes = [
   { path: 'cars/color/:colorId', component: CarcolorComponent },
   { path: 'cardetail/:carId', component: CardetailComponent },
   { path: 'coloradd', component: ColorAddComponent },
-  { path: 'carmanager', component: CarManagerComponent },
+  { path: 'carmanager', component: CarManagerComponent,canActivate:[LoginGuard] },
   { path: 'brandmanager', component: BrandManagerComponent },
   { path: 'colormanager', component: ColorManagerComponent },
     {path:"cars/car/:carId",component:CarUpdateComponent},
+    {path:"deneme",component:CarTestComponent},
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
+import { CarDetailDto } from 'src/app/models/cardetaildto';
 import { CarService } from 'src/app/services/car.service';
 @Component({
   selector: 'app-car-update',
@@ -12,6 +13,7 @@ import { CarService } from 'src/app/services/car.service';
 export class CarUpdateComponent implements OnInit {
 
   carUpdateForm:FormGroup
+  currentCar:CarDetailDto
   car:Car
   currentId:number
   constructor(

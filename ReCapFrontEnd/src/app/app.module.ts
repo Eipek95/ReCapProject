@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule,MatDialogRef  } from '@angular/material/dialog';
@@ -37,6 +37,10 @@ import { ColorManagerComponent } from './components/color-manager/color-manager.
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
 import { CarManagerComponent } from './components/car-manager/car-manager.component';
 import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { CarTestComponent } from './components/car-test/car-test.component';
+import { LoginComponent } from './login/login.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { RegisterComponent } from './components/register/register.component';
 
 
 
@@ -70,6 +74,9 @@ import { CarUpdateComponent } from './components/car-update/car-update.component
     ColorUpdateComponent,
     CarManagerComponent,
     CarUpdateComponent,
+    CarTestComponent,
+    LoginComponent,
+    RegisterComponent,
 
   ],
   imports: [
@@ -85,9 +92,11 @@ import { CarUpdateComponent } from './components/car-update/car-update.component
     })
   ],
   providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true,},
     {
-      provide: MatDialogRef ,
-      useValue: {}
+      provide: 
+      MatDialogRef ,
+      useValue: {},
     },
   ],
   bootstrap: [AppComponent]
