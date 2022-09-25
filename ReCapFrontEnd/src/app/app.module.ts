@@ -5,7 +5,6 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule,MatDialogRef  } from '@angular/material/dialog';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CarComponent } from './components/car/car.component';
@@ -41,6 +40,10 @@ import { CarTestComponent } from './components/car-test/car-test.component';
 import { LoginComponent } from './login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
+import { OperationclaimComponent } from './components/operationclaim/operationclaim.component';
+import { OperationclaimaddComponent } from './components/operationclaimadd/operationclaimadd.component';
+import { OperationclaimupdateComponent } from './components/operationclaimupdate/operationclaimupdate.component';
+
 
 
 
@@ -77,7 +80,9 @@ import { RegisterComponent } from './components/register/register.component';
     CarTestComponent,
     LoginComponent,
     RegisterComponent,
-
+    OperationclaimComponent,
+    OperationclaimaddComponent,
+    OperationclaimupdateComponent,
   ],
   imports: [
     BrowserModule,

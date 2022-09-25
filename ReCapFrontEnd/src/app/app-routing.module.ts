@@ -15,6 +15,7 @@ import { CbrandComponent } from './components/cbrand/cbrand.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { ColorManagerComponent } from './components/color-manager/color-manager.component';
 import { ColorComponent } from './components/color/color.component';
+import { OperationclaimComponent } from './components/operationclaim/operationclaim.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginGuard } from './guards/login.guard';
 import { LoginComponent } from './login/login.component';
@@ -35,6 +36,7 @@ const routes: Routes = [
     {path:"deneme",component:CarTestComponent},
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
+    { path: 'claimmanager', component: OperationclaimComponent },
 ];
 
 @NgModule({

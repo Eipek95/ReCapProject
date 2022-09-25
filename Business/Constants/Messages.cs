@@ -53,6 +53,10 @@ namespace Business.Constants
         public static string PasswordError = "Hatalı Şifre!";
         public static string AccessTokenCreated = "Access Token Created!";
         public static string GetClaimMessage = "Claims Listed!";
+        public static string AddClaimMessage = "Claims been added!";
+        public static string UpdateClaimMessage = "Claims been updated!";
+        public static string DeleteClaimMessage = "Claims been deleted!";
+        public static string ClaimNameInvalid = "Claim Name is invalid !";
         public static string GetByMail = "Claims Listed with Mail!";
 
 

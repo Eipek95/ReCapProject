@@ -20,8 +20,6 @@ export class ColorManagerComponent implements OnInit {
   ngOnInit(): void {
     this.getColors();
   }
-
-
   getColors(){
     this.colorService.getColors().subscribe(response => {
       this.colors = response.data;
