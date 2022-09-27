@@ -13,6 +13,7 @@ import { OperationclaimupdateComponent } from '../operationclaimupdate/operation
 })
 export class OperationclaimComponent implements OnInit {
   claims: OperationClaim[] = [];
+  currentClaim:OperationClaim
   constructor(
     private claimService: OperationclaimService,
     private dialog: MatDialog,
@@ -49,9 +50,12 @@ export class OperationclaimComponent implements OnInit {
       this.ngOnInit();
     });
   }
+  getdata(claim:OperationClaim){
+    this.currentClaim=claim;
+  }
   deleteClaim(claim: OperationClaim) {
     this.claimService.delete(claim).subscribe(() => {
-    
+      
       this.toastrService.success(claim.name + ' silindi', 'Silme başarılı');
       this.ngOnInit();
     });

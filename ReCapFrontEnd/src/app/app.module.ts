@@ -34,6 +34,7 @@ import { BrandUpdateComponent } from './components/brand-update/brand-update.com
 import { BrandManagerComponent } from './components/brand-manager/brand-manager.component';
 import { ColorManagerComponent } from './components/color-manager/color-manager.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { CarManagerComponent } from './components/car-manager/car-manager.component';
 import { CarUpdateComponent } from './components/car-update/car-update.component';
 import { CarTestComponent } from './components/car-test/car-test.component';
@@ -43,6 +44,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { OperationclaimComponent } from './components/operationclaim/operationclaim.component';
 import { OperationclaimaddComponent } from './components/operationclaimadd/operationclaimadd.component';
 import { OperationclaimupdateComponent } from './components/operationclaimupdate/operationclaimupdate.component';
+import { UserclaimComponent } from './components/userclaim/userclaim.component';
+import { AccountLoginComponent } from './account/account-login/account-login.component';
+import { AccountRegisterComponent } from './account/account-register/account-register.component';
+import { AccountLayoutComponent } from './account/account-layout/account-layout.component';
+
 
 
 
@@ -83,6 +89,10 @@ import { OperationclaimupdateComponent } from './components/operationclaimupdate
     OperationclaimComponent,
     OperationclaimaddComponent,
     OperationclaimupdateComponent,
+    UserclaimComponent,
+    AccountLoginComponent,
+    AccountRegisterComponent,
+    AccountLayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,6 +108,8 @@ import { OperationclaimupdateComponent } from './components/operationclaimupdate
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true,},
+    {provide:JWT_OPTIONS,useValue:JWT_OPTIONS},
+    JwtHelperService,
     {
       provide: 
       MatDialogRef ,

@@ -16,10 +16,14 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
 import { ColorManagerComponent } from './components/color-manager/color-manager.component';
 import { ColorComponent } from './components/color/color.component';
 import { OperationclaimComponent } from './components/operationclaim/operationclaim.component';
-import { RegisterComponent } from './components/register/register.component';
-import { LoginGuard } from './guards/login.guard';
-import { LoginComponent } from './login/login.component';
 
+import { LoginGuard } from './guards/login.guard';
+import { LogincustomGuard } from './guards/logincustom.guard';
+import { RoleGuard } from './guards/role.guard';
+import { LoginComponent } from './login/login.component';
+import { AccountLoginComponent } from './account/account-login/account-login.component';
+import { AccountRegisterComponent } from './account/account-register/account-register.component';
+import { AccountLayoutComponent } from './account/account-layout/account-layout.component';
 
 const routes: Routes = [
   //<app-route> çlıştığı yer
@@ -29,14 +33,20 @@ const routes: Routes = [
   { path: 'cars/color/:colorId', component: CarcolorComponent },
   { path: 'cardetail/:carId', component: CardetailComponent },
   { path: 'coloradd', component: ColorAddComponent },
-  { path: 'carmanager', component: CarManagerComponent,canActivate:[LoginGuard] },
+  { path: 'carmanager', component: CarManagerComponent,canActivate: [LogincustomGuard, RoleGuard], data: { expectedRole: 'admin' }},
   { path: 'brandmanager', component: BrandManagerComponent },
   { path: 'colormanager', component: ColorManagerComponent },
     {path:"cars/car/:carId",component:CarUpdateComponent},
     {path:"deneme",component:CarTestComponent},
-    { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
+    //{ path: 'login', component: LoginComponent },
+    //{ path: 'register', component: RegisterComponent },
     { path: 'claimmanager', component: OperationclaimComponent },
+    {
+      path: 'account', component: AccountLayoutComponent, children: [
+        { path: 'login', component: AccountLoginComponent, canActivate: [LogincustomGuard] },
+        { path: 'register', component: AccountRegisterComponent, canActivate: [LogincustomGuard] }
+      ]
+    }
 ];
 
 @NgModule({
