@@ -119,7 +119,7 @@ namespace WebAPI.Controllers
             var result = _carService.DeleteCar(car);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(result);
             }
             else
             {

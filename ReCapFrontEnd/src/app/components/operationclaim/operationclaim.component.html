@@ -65,11 +65,11 @@
           <button type="button"  class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-        <h5>{{currentClaim.name}}</h5>
+        <h1>{{currentClaim.name}}</h1>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
-          <button (click)="deleteClaim(currentClaim)" type="button" class="btn btn-primary">Sil</button>
+          <button (click)="deleteClaim(currentClaim)" data-bs-dismiss="modal" type="button" class="btn btn-primary">Sil</button>
         </div>
       </div>
     </div>

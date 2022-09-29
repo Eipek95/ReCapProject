@@ -48,6 +48,10 @@ import { UserclaimComponent } from './components/userclaim/userclaim.component';
 import { AccountLoginComponent } from './account/account-login/account-login.component';
 import { AccountRegisterComponent } from './account/account-register/account-register.component';
 import { AccountLayoutComponent } from './account/account-layout/account-layout.component';
+import { CarTestUpdateComponent } from './components/car-test-update/car-test-update.component';
+import { CarTestManagerComponent } from './components/car-test-manager/car-test-manager.component';
+import { CarTestDeleteComponent } from './components/car-test-delete/car-test-delete.component';
+
 
 
 
@@ -93,6 +97,9 @@ import { AccountLayoutComponent } from './account/account-layout/account-layout.
     AccountLoginComponent,
     AccountRegisterComponent,
     AccountLayoutComponent,
+    CarTestUpdateComponent,
+    CarTestManagerComponent,
+    CarTestDeleteComponent
   ],
   imports: [
     BrowserModule,

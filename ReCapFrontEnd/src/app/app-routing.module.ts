@@ -24,6 +24,8 @@ import { LoginComponent } from './login/login.component';
 import { AccountLoginComponent } from './account/account-login/account-login.component';
 import { AccountRegisterComponent } from './account/account-register/account-register.component';
 import { AccountLayoutComponent } from './account/account-layout/account-layout.component';
+import { CarTestManagerComponent } from './components/car-test-manager/car-test-manager.component';
+import { CarTestUpdateComponent } from './components/car-test-update/car-test-update.component';
 
 const routes: Routes = [
   //<app-route> çlıştığı yer
@@ -37,7 +39,7 @@ const routes: Routes = [
   { path: 'brandmanager', component: BrandManagerComponent },
   { path: 'colormanager', component: ColorManagerComponent },
     {path:"cars/car/:carId",component:CarUpdateComponent},
-    {path:"deneme",component:CarTestComponent},
+    {path:"deneme",component:CarTestManagerComponent},
     //{ path: 'login', component: LoginComponent },
     //{ path: 'register', component: RegisterComponent },
     { path: 'claimmanager', component: OperationclaimComponent },

@@ -20,11 +20,12 @@ export class FormService {
   }
   createCarForm():FormGroup{
     return this.formBuilder.group({
-      brandId: ['', Validators.required],
-      colorId: ['',Validators.required],
-      modelYear: ['', Validators.required],
-      dailyPrice:['', Validators.required],
-      description: ['', Validators.required]
+      brandId: ["", [Validators.required, Validators.pattern("^[0-9]*$"), Validators.min(1)]],
+      colorId: ["", [Validators.required, Validators.pattern("^[0-9]*$"), Validators.min(1)]],
+      modelYear: ["", [Validators.required, Validators.pattern("^[0-9]*$")]],
+      dailyPrice: ["", [Validators.required, Validators.pattern("^[0-9]*$"), Validators.min(1)]],
+      description: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(50)]]
+
     })
   }
   createDemoCarForm():FormGroup{

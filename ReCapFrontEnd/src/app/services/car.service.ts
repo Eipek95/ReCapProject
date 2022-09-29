@@ -14,6 +14,10 @@ export class CarService {
   private apiUrl = 'https://localhost:7199/api/';
   constructor(private httpClient: HttpClient) {}
 
+  getMyCars() {
+    let newPath = this.apiUrl + 'Cars/getcar';
+    return this.httpClient.get<ListResponseModel<Car>>(newPath);
+  }
   getCars() {
     let newPath = this.apiUrl + 'Cars/getallcars';
     return this.httpClient.get<ListResponseModel<Car>>(newPath);
@@ -46,5 +50,9 @@ export class CarService {
   update(car: Car): Observable<ResponseModel> {
     let newPath: string = this.apiUrl + 'Cars/updatecars';
     return this.httpClient.post<ResponseModel>(newPath, car);
+  }
+  delete(car: Car): Observable<ResponseModel> {
+    let newPath = this.apiUrl + 'Cars/deletecars'
+    return this.httpClient.post<ResponseModel>(newPath, car)
   }
 }

@@ -67,13 +67,20 @@ namespace Business.Constants
 
         public static string StringMustConsistOfNumbersOnly = "String, sadece sayilardan olusmalidir";
         public static string InsufficientCardBalance = "Kart bakiyesi yetersiz";
-        public static string PaymentSuccessful= "Odeme basariyla tamamlandi";
-        public static string CustomersCreditCardsListed= "Müsterinin kredi kartlari listelendi";
-        public static string CustomerCreditCardAlreadySaved= "Kredi karti zaten kaydedilmis";
-        public static string CustomerCreditCardSaved= "Müsteri kredi karti basariyla kaydedildi";
-        public static string CustomerCreditCardFailedToSave= "Müsteri kredi karti kaydedilemedi";
-        public static string CustomerCreditCardDeleted= "Musteri kredi karti basariyla silindi";
-        public static string CustomerCreditCardNotDeleted= "Musteri kredi karti silinemedi";
-        public static string CustomerCreditCardNotFound= "Müsteri kredi karti bulunamadi";
+        public static string PaymentSuccessful = "Odeme basariyla tamamlandi";
+        public static string CustomersCreditCardsListed = "Müsterinin kredi kartlari listelendi";
+        public static string CustomerCreditCardAlreadySaved = "Kredi karti zaten kaydedilmis";
+        public static string CustomerCreditCardSaved = "Müsteri kredi karti basariyla kaydedildi";
+        public static string CustomerCreditCardFailedToSave = "Müsteri kredi karti kaydedilemedi";
+        public static string CustomerCreditCardDeleted = "Musteri kredi karti basariyla silindi";
+        public static string CustomerCreditCardNotDeleted = "Musteri kredi karti silinemedi";
+        public static string CustomerCreditCardNotFound = "Müsteri kredi karti bulunamadi";
+        public static string CarImageAdded = "Resimler Başarıyla Eklendi";
+        public static string CarImageIdNotExist = "Araç Bulunamadı";
+        public static string ErrorUpdatingImage = "Araç Resimleri Güncellenemedi";
+        public static string CarImageUpdated = "Araç Resimleri Güncellendi";
+        public static string ErrorDeletingImage = "Araç Resimleri Silinemedi";
+        public static string NoPictureOfTheCar = "Araca Ait Resim Yok";
+        public static string CarImageDeleted = "Araca Ait Resimler Silindi";
     }
 }
