@@ -35,20 +35,17 @@ const routes: Routes = [
   { path: 'cars/color/:colorId', component: CarcolorComponent },
   { path: 'cardetail/:carId', component: CardetailComponent },
   { path: 'coloradd', component: ColorAddComponent },
-  { path: 'carmanager', component: CarManagerComponent,canActivate: [LogincustomGuard, RoleGuard], data: { expectedRole: 'admin' }},
   { path: 'brandmanager', component: BrandManagerComponent },
   { path: 'colormanager', component: ColorManagerComponent },
     {path:"cars/car/:carId",component:CarUpdateComponent},
-    {path:"deneme",component:CarTestManagerComponent},
-    //{ path: 'login', component: LoginComponent },
-    //{ path: 'register', component: RegisterComponent },
-    { path: 'claimmanager', component: OperationclaimComponent },
+    {path:"carmanager",component:CarTestManagerComponent,canActivate: [LogincustomGuard, RoleGuard], data: { expectedRole: 'admin' }},
+    { path: 'claimmanager', component: OperationclaimComponent,canActivate: [LogincustomGuard, RoleGuard], data: { expectedRole: 'admin' } },
     {
       path: 'account', component: AccountLayoutComponent, children: [
         { path: 'login', component: AccountLoginComponent, canActivate: [LogincustomGuard] },
         { path: 'register', component: AccountRegisterComponent, canActivate: [LogincustomGuard] }
       ]
-    }
+    },
 ];
 
 @NgModule({

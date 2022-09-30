@@ -52,12 +52,6 @@ import { CarTestUpdateComponent } from './components/car-test-update/car-test-up
 import { CarTestManagerComponent } from './components/car-test-manager/car-test-manager.component';
 import { CarTestDeleteComponent } from './components/car-test-delete/car-test-delete.component';
 
-
-
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
