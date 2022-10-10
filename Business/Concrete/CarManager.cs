@@ -140,5 +140,25 @@ namespace Business.Concrete
             }
             return new SuccessResult();
         }
+
+        public IDataResult<List<OwnerCarDetailDto>> GetCarDetailsByBrandOwner(int brandId)
+        {
+            return new SuccessDataResult<List<OwnerCarDetailDto>>(_carDal.GetCarDetailsOwner(c => c.BrandId == brandId).ToList());
+        }
+
+        public IDataResult<List<OwnerCarDetailDto>> GetCarsByFilterWithDetails(int brandId, int colorId)
+        {
+            return new SuccessDataResult<List<OwnerCarDetailDto>>(_carDal.GetCarDetailsOwner(x=>x.BrandId==brandId && x.ColorId==colorId), Messages.CarsListed);
+        }
+
+        public IDataResult<OwnerCarDetailDto> GetCarDetailsByCarIdOwner(int carId)
+        {
+            return new SuccessDataResult<OwnerCarDetailDto>(_carDal.GetCarDetailsOwner(c => c.Id == carId).SingleOrDefault());
+        }
+
+        public IDataResult<List<OwnerCarDetailDto>> GetCarDetailsByColorOwner(int colorId)
+        {
+            return new SuccessDataResult<List<OwnerCarDetailDto>>(_carDal.GetCarDetailsOwner(c => c.ColorId == colorId).ToList());
+        }
     }
 }

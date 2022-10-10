@@ -1,44 +1,41 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BrandAddComponent } from './components/brand-add/brand-add.component';
-import { BrandManagerComponent } from './components/brand-manager/brand-manager.component';
-import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
-import { CarAddComponent } from './components/car-add/car-add.component';
-import { CarManagerComponent } from './components/car-manager/car-manager.component';
-import { CarTestComponent } from './components/car-test/car-test.component';
-import { CarUpdateComponent } from './components/car-update/car-update.component';
-import { CarComponent } from './components/car/car.component';
-import { CarcolorComponent } from './components/carcolor/carcolor.component';
-import { CardetailComponent } from './components/cardetail/cardetail.component';
-import { CarimageComponent } from './components/carimage/carimage.component';
-import { CbrandComponent } from './components/cbrand/cbrand.component';
-import { ColorAddComponent } from './components/color-add/color-add.component';
-import { ColorManagerComponent } from './components/color-manager/color-manager.component';
-import { ColorComponent } from './components/color/color.component';
 import { OperationclaimComponent } from './components/operationclaim/operationclaim.component';
-
 import { LoginGuard } from './guards/login.guard';
 import { LogincustomGuard } from './guards/logincustom.guard';
 import { RoleGuard } from './guards/role.guard';
-import { LoginComponent } from './login/login.component';
 import { AccountLoginComponent } from './account/account-login/account-login.component';
 import { AccountRegisterComponent } from './account/account-register/account-register.component';
 import { AccountLayoutComponent } from './account/account-layout/account-layout.component';
-import { CarTestManagerComponent } from './components/car-test-manager/car-test-manager.component';
-import { CarTestUpdateComponent } from './components/car-test-update/car-test-update.component';
+import { AdminLayoutComponent } from './components/admin/admin-layout/admin-layout.component';
+import { AdminBrandManagerComponent } from './components/admin/admin-brand-manager/admin-brand-manager.component';
+import { AdminCarManagerComponent } from './components/admin/admin-car-manager/admin-car-manager.component';
+import { AdminColorManagerComponent } from './components/admin/admin-color-manager/admin-color-manager.component';
+import { HomeComponent } from './components/home/home.component';
+import { HomeLayoutComponent } from './components/home-layout/home-layout.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { CartComponent } from './components/cart/cart.component';
+import { CarDetailsComponent } from './components/car-details/car-details.component';
 
 const routes: Routes = [
   //<app-route> çlıştığı yer
-  { path: '', component: CarComponent },
-  { path: 'cars', component: CbrandComponent },
-  { path: 'cars/brand/:id', component: CbrandComponent },
-  { path: 'cars/color/:colorId', component: CarcolorComponent },
-  { path: 'cardetail/:carId', component: CardetailComponent },
-  { path: 'coloradd', component: ColorAddComponent },
-  { path: 'brandmanager', component: BrandManagerComponent },
-  { path: 'colormanager', component: ColorManagerComponent },
-    {path:"cars/car/:carId",component:CarUpdateComponent},
-    {path:"carmanager",component:CarTestManagerComponent,canActivate: [LogincustomGuard, RoleGuard], data: { expectedRole: 'admin' }},
+  { path: '', pathMatch: 'full', component: HomeComponent },
+  { path: 'brand/:brandid', component: HomeComponent },
+  { path: 'color/:colorid', component: HomeComponent },
+  {
+    path: '', component: HomeLayoutComponent, children: [
+     { path: 'car-details/:carid', component: CarDetailsComponent },
+      { path: 'cart', component: CartComponent, canActivate: [LoginGuard] },
+      { path: 'profile', component: ProfileComponent, canActivate: [LoginGuard] },
+      {
+        path: 'admin', component: AdminLayoutComponent, children: [
+          { path: 'brand/manager', component: AdminBrandManagerComponent, canActivate: [LoginGuard, RoleGuard], data: { expectedRole: 'admin' } },
+          { path: 'color/manager', component: AdminColorManagerComponent, canActivate: [LoginGuard, RoleGuard], data: { expectedRole: 'admin' } },
+          { path: 'car/manager', component: AdminCarManagerComponent, canActivate: [LoginGuard, RoleGuard], data: { expectedRole: 'admin' } },
+        ]
+      }
+    ]
+  },
     { path: 'claimmanager', component: OperationclaimComponent,canActivate: [LogincustomGuard, RoleGuard], data: { expectedRole: 'admin' } },
     {
       path: 'account', component: AccountLayoutComponent, children: [

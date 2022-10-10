@@ -1,9 +1,0 @@
-<div style="width: 200px;display: inline-block;">
-    <select   class="form-select " [(ngModel)]="currentBrandId">
-      <option value="undefined">Marka Seç</option>
-      <option *ngFor="let brand of brands" [value]="brand.id">
-          {{brand.name}}
-      </option>
-  </select>
-  </div>
-      <button type="button" class="btn btn-outline-dark" (click)="routeToCarDetailsPageByBrandId()"> Listele</button>

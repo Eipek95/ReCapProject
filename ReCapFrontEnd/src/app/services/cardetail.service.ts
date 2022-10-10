@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CarDetailDto } from '../models/cardetaildto';
 import { Carimage } from '../models/carimage';
-import { CarService } from './car.service';
-import { CarimageService } from './carimage.service';
-import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/listResponseModel';
 import { HttpClient } from '@angular/common/http';

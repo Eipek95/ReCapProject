@@ -24,4 +24,8 @@ export class BrandService {
     let newPath: string = this.apiUrl + 'Brands/updateBrand';
     return this.httpClient.post<ResponseModel>(newPath, brand);
   }
+  delete(brand: Brand): Observable<ResponseModel> {
+    let newPath = this.apiUrl + 'Brands/deleteBrand'
+    return this.httpClient.post<ResponseModel>(newPath, brand)
+  }
 }

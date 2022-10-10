@@ -111,7 +111,8 @@ namespace DataAccess.Concrete.InMermory
             throw new NotImplementedException();
         }
 
-        public List<OwnerCarDetailDto> GetOwnerCarDetails(Expression<Func<OwnerCarDetailDto, bool>> filter = null)
+
+        public List<OwnerCarDetailDto> GetCarDetailsOwner(Expression<Func<OwnerCarDetailDto, bool>> filter = null)
         {
             throw new NotImplementedException();
         }

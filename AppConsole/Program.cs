@@ -19,26 +19,7 @@ using Entities.Concrete;
 //GetRentalDetail();
 static void CarTest()
 {
-    CarManager carManager = new CarManager(new EfCarDal());
-    Console.WriteLine("id----BrandId----ColorId----DailyPrice----ModelYear----Description");
-    foreach (var cars in carManager.GetAll().Data)
-    {
-        Console.WriteLine("{0}----{1}----{2}----{3}----{4}----{5}",
-            cars.Id, cars.BrandId, cars.ColorId, cars.DailyPrice, cars.ModelYear, cars.Description);
-    }
-
-
-
-    Console.WriteLine("Get_Cars_By_Brand_Id=1");
-    foreach (var carBrand in carManager.GetCarsByBrandId(1).Data)
-    {
-        Console.WriteLine(carBrand.DailyPrice + " " + carBrand.Description + " " + carBrand.ModelYear);
-    }
-    Console.WriteLine("Get_Cars_By_Color_Id=1");
-    foreach (var carBrand in carManager.GetCarsByColorId(1).Data)
-    {
-        Console.WriteLine(carBrand.DailyPrice + " " + carBrand.Description + " " + carBrand.ModelYear);
-    }
+   
 }
 
 static void ColorTest()
@@ -61,45 +42,23 @@ static void BrandTest()
 
 static void ResultGetCarDetailsTest()
 {
-    CarManager carManager = new CarManager(new EfCarDal());
-    Console.WriteLine(carManager.GetAll().Message);
-    foreach (var carDetails in carManager.GetCarDetails().Data)
-    {
-        Console.WriteLine("Açıklama: " + carDetails.Description + " Renk: " + carDetails.ColorName + " Marka: " + carDetails.BriandName);
-    }
+  
 }
 
 static void ResultGetCustomerTest()
 {
-    CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
-    foreach (var customer in customerManager.GetCustomerDetails().Data)
-    {
-        Console.WriteLine(customer.Id + "/" + customer.CustomerName + "/" + customer.CustomerSurName + "/" + customer.CustomerMail + " " + customer.Company);
-    }
+    
 }
 
 static void RentalAddTest()
 {
-    RentalManager rentalManager = new RentalManager(new EfRentalDal());
-    Console.WriteLine( rentalManager.AddRental(new Rental
-    {
-        CarId = 4,
-        CustomerId = 1,
-        RentDate = new DateTime(2022, 8, 22),
-        ReturnDate = null
-    }).Message
-    );
-}
 
-static void GetRentalDetail()
-{
-    RentalManager rentalManager = new RentalManager(new EfRentalDal());
-    foreach (var rentalDetail in rentalManager.GetRentalDetail().Data)
+
+    static void GetRentalDetail()
     {
-        Console.WriteLine(rentalDetail.id + " " + rentalDetail.CustomerName + " " + rentalDetail.CustomerSurname + " " + rentalDetail.CarName + " " + rentalDetail.RentalDate.ToShortDateString() + " " + rentalDetail.ReturnDate);
+
     }
 }
-
 
 
 #region oldCodes

@@ -1,7 +1,5 @@
-export interface Customer{
-    id:number;
-    customerName:string;
-    customerSurName:string;
-    customerMail:string;
-    company:string
+export class Customer{
+    id: number;
+    userId: number;
+    companyName: string;
 }

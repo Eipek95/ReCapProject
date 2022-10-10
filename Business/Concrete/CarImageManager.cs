@@ -132,7 +132,7 @@ namespace Business.Concrete
                 return new SuccessDataResult<List<CarImage>>(result);
             }
             List<CarImage> images = new List<CarImage>();
-            images.Add(new CarImage() { CarId = 0, Id = 0, ImagePath = "/images/defaultt.jpg" });
+            images.Add(new CarImage() { CarId = 0, Id = 0, ImagePath = "/images/default.jpg" });
             return new SuccessDataResult<List<CarImage>>(images);
         }
 

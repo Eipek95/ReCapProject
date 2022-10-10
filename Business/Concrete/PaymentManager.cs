@@ -38,11 +38,11 @@ namespace Business.Concrete
                 _paymentDal.Add(new Payment
                 {
                     CustomerId = customerId,
-                    CreditCardId = creditCard.Id,
+                    CreditCardId = creditCard.id,
                     Amount = amount,
                     PaymentDate = paymentDate
                 });
-                var paymentId = _paymentDal.Get(p => p.CustomerId == customerId && p.Amount == amount && p.CreditCardId == creditCard.Id && (p.PaymentDate.Date == paymentDate.Date && p.PaymentDate.Hour == paymentDate.Hour && p.PaymentDate.Second == paymentDate.Second)).Id;
+                var paymentId = _paymentDal.Get(p => p.CustomerId == customerId && p.Amount == amount && p.CreditCardId == creditCard.id && (p.PaymentDate.Date == paymentDate.Date && p.PaymentDate.Hour == paymentDate.Hour && p.PaymentDate.Second == paymentDate.Second)).Id;
                 return new SuccessDataResult<int>(paymentId, Messages.PaymentSuccessful);
             }
 

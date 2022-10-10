@@ -38,7 +38,7 @@ namespace Business.Concrete
             CustomerCreditCard customerCreditCard = new CustomerCreditCard
             {
                 CustomerId = customerCreditCardModel.CustomerId,
-                CreditCardId = creditCardResult.Data.Id
+                CreditCardId = creditCardResult.Data.id
             };
 
             var result = GetCustomerCreditCard(customerCreditCard);
@@ -92,7 +92,7 @@ namespace Business.Concrete
             CustomerCreditCard customerCreditCard = new CustomerCreditCard
             {
                 CustomerId = customerCreditCardModel.CustomerId,
-                CreditCardId = creditCardResult.Data.Id
+                CreditCardId = creditCardResult.Data.id
             };
 
             var customerCreditCardExist = _customerCreditCardDal.GetAll(ccc =>
@@ -126,6 +126,15 @@ namespace Business.Concrete
             }
 
             return new ErrorDataResult<CustomerCreditCard>();
+        }
+
+
+        public IDataResult<List<CreditCard>> GetSavedCreditCardsBy(int customerId)
+        {
+            var userCreditCardsResult = _customerCreditCardDal.GetAll(ucc => ucc.CustomerId == customerId);
+            
+            
+            return new SuccessDataResult<List<CreditCard>>(null, Messages.CustomersCreditCardsListed);
         }
     }
 }

@@ -96,26 +96,25 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-        public List<OwnerCarDetailDto> GetOwnerCarDetails(Expression<Func<OwnerCarDetailDto, bool>> filter = null)
+        public List<OwnerCarDetailDto> GetCarDetailsOwner(Expression<Func<OwnerCarDetailDto, bool>> filter = null)
         {
             using (ReCapDBContext context = new ReCapDBContext())
             {
-
                 var result = from c in context.Cars
                              join b in context.Brands
-                                 on c.BrandId equals b.Id
+                             on c.BrandId equals b.Id
                              join co in context.Colors
-                                 on c.ColorId equals co.Id
+                             on c.ColorId equals co.Id
                              select new OwnerCarDetailDto
                              {
                                  Id = c.Id,
-                                 BrandId = c.BrandId,
+                                 BrandId = b.Id,
                                  BrandName = b.Name,
-                                 ColorId = c.ColorId,
+                                 ColorId =c.ColorId,
                                  ColorName = co.Name,
-                                 DailyPrice = c.DailyPrice,
                                  Description = c.Description,
                                  ModelYear = c.ModelYear,
+                                 DailyPrice = c.DailyPrice,
                                  CarImages = ((from ci in context.CarImages
                                                where (c.Id == ci.CarId)
                                                select new CarImage
@@ -137,8 +136,8 @@ namespace DataAccess.Concrete.EntityFramework
                                                        }).ToList()
                              };
                 return filter == null
-                ? result.ToList()
-                : result.Where(filter).ToList();
+                    ? result.ToList()
+                    : result.Where(filter).ToList();
             }
         }
     }

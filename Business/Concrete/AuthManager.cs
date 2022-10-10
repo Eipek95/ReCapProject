@@ -5,6 +5,7 @@ using Core3.Utilities.Results;
 using Core3.Utilities.Security.Hashing;
 using Core3.Utilities.Security.JWT;
 using Entities.DTOs;
+using Entities.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,27 +25,49 @@ namespace Business.Concrete
             _tokenHelper = tokenHelper;
         }
 
+        public IResult ChangePassword(ChangePasswordModel updatedUser)
+        {
+            UserForLoginDto checkedUser = new UserForLoginDto
+            {
+                Email = updatedUser.Email,
+                Password = updatedUser.OldPassword
+            };
+            var loginResult = Login(checkedUser);
+            if (loginResult.Success)
+            {
+                var user = loginResult.Data;
+                byte[] passwordHash, passwordSalt;
+                HashingHelper.CreatePasswordHash(updatedUser.NewPassword, out passwordHash, out passwordSalt);
+                user.PasswordHash = passwordHash;
+                user.PasswordSalt = passwordSalt;
+                _userService.Update(user);
+                return new SuccessResult(Messages.PasswordChanged);
+            }
+
+            return new ErrorResult(loginResult.Message);
+        }
+
         public IDataResult<AccessToken> CreateAccessToken(User user)
         {
             var claims = _userService.GetClaims(user);
-            var accessToken = _tokenHelper.CreateToken(user, claims);
+            var accessToken = _tokenHelper.CreateToken(user, claims.Data);
             return new SuccessDataResult<AccessToken>(accessToken, Messages.AccessTokenCreated);
         }
 
         public IDataResult<User> Login(UserForLoginDto userForLoginDto)
         {
-            var userToCheck = _userService.GetByMail(userForLoginDto.Email);
-            if (userToCheck == null)
+            var userToCheck = _userService.GetUserByMail(userForLoginDto.Email);
+            if (userToCheck.Data == null)
             {
                 return new ErrorDataResult<User>(Messages.UserNotFound);
             }
 
-            if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.PasswordHash, userToCheck.PasswordSalt))
+            if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.Data.PasswordHash, userToCheck.Data.PasswordSalt))
             {
                 return new ErrorDataResult<User>(Messages.PasswordError);
             }
 
-            return new SuccessDataResult<User>(userToCheck, Messages.SuccessfulLogin);
+            return new SuccessDataResult<User>(userToCheck.Data, Messages.SuccessfulLogin);
         }
 
         public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password)
@@ -66,7 +89,7 @@ namespace Business.Concrete
 
         public IResult UserExists(string email)
         {
-            if (_userService.GetByMail(email) != null)
+            if (_userService.GetUserByMail(email).Data != null)
             {
                 return new ErrorResult(Messages.UserAlreadyExists);
             }

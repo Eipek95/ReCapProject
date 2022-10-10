@@ -12,6 +12,7 @@ namespace Business.Abstract
     {
         IResult AddColor(Color color);
         IResult UpdateColor(Color color);
+        IResult DeleteColor(Color color);
         IDataResult<List<Color>> GetColors();
     }
 }

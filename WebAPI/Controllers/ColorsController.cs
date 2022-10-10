@@ -46,9 +46,22 @@ namespace WebAPI.Controllers
             }
         }
         [HttpPost("updateColor")]
-        public IActionResult UpdateBrand(Color color)
+        public IActionResult UpdateColor(Color color)
         {
             var result = _colorService.UpdateColor(color);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
+        }
+        [HttpPost("deleteColor")]
+        public IActionResult DeleteColor(Color color)
+        {
+            var result = _colorService.DeleteColor(color);
             if (result.Success)
             {
                 return Ok(result);

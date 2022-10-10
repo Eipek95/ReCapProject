@@ -1,7 +1,7 @@
 <body class="text-center account-page">
     <main class="form-account account-card">
         <div class="card-body">
-            <div class="logo" style="font-size: 40px;"><span>ReCap</span><span><span>Project</span></span></div>
+            <div class="logo" style="font-size: 40px;"><span>Golden</span><span><span>Car</span></span></div>
             <hr class="solid">
             <form [formGroup]="registerForn" class="mt-4">
                 <div class="form-floating mb-2">
@@ -30,18 +30,18 @@
                     <label for="signupconfirmpassword">Parola tekrar</label>
                 </div>
 
-                <div class="checkbox mb-3 mt-3 text">
+                <div class="checkbox mb-3 mt-3 text-light">
                     <label>
                         <input type="checkbox" value="remember-me" [(ngModel)]="rememberMe"
                             [ngModelOptions]="{standalone: true}"> E-postamı hatırla
                     </label>
                 </div>
-                <button (click)="register()" class="w-100 btn btn-lg btn-primary"
-                   
+                <button (click)="register()" class="w-100 btn btn-lg"
+                    style="background-color: var(--firstThemeColor); color: var(--secondThemeColor);"
                     type="submit"><strong>ÜYE
                         OL</strong></button>
 
-                <div class="text mt-3" >
+                <div class="text-light mt-3" style="font-size:14px">
                     Zaten bir hesabın var mı? <a routerLink="/account/login"
                         style="color: var(--firstThemeColor);">Hemen giriş yap!</a>
                 </div>

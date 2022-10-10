@@ -5,9 +5,12 @@ using Core3.Aspects.Autofac.Validation;
 using Core3.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
+using Entities.Model;
 using FluentValidation.Validators;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,9 +21,11 @@ namespace Business.Concrete
     {
         private readonly ICreditCardDal _creditCardDal;
 
+
         public CreditCardManager(ICreditCardDal creditCardDal)
         {
             _creditCardDal = creditCardDal;
+
         }
 
         public IDataResult<CreditCard> Get(string cardNumber, string expireYear, string expireMonth, string cvc, string cardHolderFullName)
@@ -30,12 +35,24 @@ namespace Business.Concrete
             {
                 return new SuccessDataResult<CreditCard>(creditCard);
             }
-            return new ErrorDataResult<CreditCard>(null, Messages.CreditCardNotValid);
+            else
+            {
+                CreditCard creditCard1 = new CreditCard() { CardNumber = cardNumber, ExpireYear = expireYear, ExpireMonth = expireMonth, Cvc = cvc, CardHolderFullName = cardHolderFullName, Balance = 250000 };
+                var result = AddCreditCard(creditCard1);
+                if (result.Success)
+                {
+                    return new SuccessDataResult<CreditCard>(creditCard1);
+                }
+                else
+                {
+                    return new ErrorDataResult<CreditCard>(null, Messages.CreditCardNotValid);
+                }
+            }
         }
 
         public IDataResult<CreditCard> GetById(int creditCardId)
         {
-            var creditCard = _creditCardDal.Get(c => c.Id == creditCardId);
+            var creditCard = _creditCardDal.Get(c => c.id == creditCardId);
             if (creditCard != null)
             {
                 return new SuccessDataResult<CreditCard>(creditCard, Messages.CreditCardListed);
@@ -67,6 +84,29 @@ namespace Business.Concrete
                                            c.ExpireMonth == expireMonth &&
                                            c.Cvc == cvc &&
                                            c.CardHolderFullName == cardHolderFullName.ToUpperInvariant()); // Convert Turkish characters into standard characters.
+        }
+        //if credit card not in database
+        [ValidationAspect(typeof(CreditCardValidator))]
+        private IResult AddCreditCard(CreditCard card)
+        {
+
+            if (Convert.ToInt32(card.ExpireMonth) <= 12 && Convert.ToInt32(card.ExpireMonth) >= 1)
+            {
+                _creditCardDal.Add(card);
+                var result = _creditCardDal.Get(cc =>
+             cc.CardNumber == card.CardNumber &&
+             cc.ExpireYear == card.ExpireYear &&
+             cc.ExpireMonth == card.ExpireMonth &&
+             cc.Cvc == card.Cvc &&
+             cc.CardHolderFullName == card.CardHolderFullName.ToUpperInvariant() &&
+             cc.Balance == card.Balance
+             );
+                if (result != null)
+                {
+                    return new SuccessDataResult<CreditCard>(card, Messages.CustomerCreditCardSaved);
+                }
+            }
+            return new ErrorDataResult<int>(-1, "Kredi Kartı eklenirken bir sorun oldu");
         }
     }
 }

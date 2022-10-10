@@ -82,5 +82,22 @@ namespace Business.Constants
         public static string ErrorDeletingImage = "Araç Resimleri Silinemedi";
         public static string NoPictureOfTheCar = "Araca Ait Resim Yok";
         public static string CarImageDeleted = "Araca Ait Resimler Silindi";
+        public static string RentalCarNotAvailable = "Kiralanacak Araç Müsait Değil";
+        public static string ReservationBetweenSelectedDatesExist = "Seçilen tarihler arasında rezarvasyon var";
+        public static string CarCanBeRentedBetweenSelectedDates= "Seçilen Tarihler Arasında Araç Kiralanabilir";
+        public static string RentalsListed="Kiralıklar Listelendi";
+        public static string DeliveryStatusCanNotBeNull= "Teslimat Durumu Boş Olamaz";
+        public static string DeliveryStatusMustBeFalse= "Teslimat Durumu Yanlış Olmalıdır";
+        public static string DeliveryStatusMustBeNull = "Teslimat Durumu Boş Olmalıdır";
+        public static string CarAlreadyRentedByTheReservationDate= "Araba Zaten Rezervasyon Tarihinde Kiralanmış";
+        public static string RentDateMustBeGreaterThanReturnDate= "Kiralama Tarihi İade Tarihinden Daha Büyük Olmalı";
+        public static string LeastOneCustomerIdDoesNotMatch= "En Az Bir Müşteri Kimliği Eşleşmiyor";
+        public static string InsufficientFindexScore= "Yetersiz Findex Score";
+        public static string TotalAmountNotMatch= "Toplam Tutar Eşleşmiyor";
+        public static string RentalSuccessful="Kiralama Başarılı";
+        public static string RentalNotExist= "Kiralama Yok";
+        public static string UserEmailNotAvailable= "Kullanıcı E-postası Kullanılamaz";
+        public static string NotAddedCustomer="Kullanıcı Eklenemedi";
+        public static string PasswordChanged="Şifre Değişti";
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Core3.Utilities.Results;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,11 @@ namespace Business.Concrete
         {
             _colorDal.Update(color);
             return new Result(true,"Başarıyla Güncellendi");
+        }
+        public IResult DeleteColor(Color color)
+        {
+            _colorDal.Delete(color);
+            return new Result(true, "Marka Başarıyla Silindi");
         }
     }
 }

@@ -22,7 +22,7 @@ export class LoginGuard implements CanActivate {
         return true;
         }
         else{
-          this.router.navigate(["login"])//sistemde auth değilse login sayfasına gönder
+          this.router.navigate(["account/login"])//sistemde auth değilse login sayfasına gönder
           this.toastrService.info("Sisteme giriş yapmalısınız")
           return false;
         }

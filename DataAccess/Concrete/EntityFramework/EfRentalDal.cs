@@ -6,6 +6,7 @@ using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,40 +14,41 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfRentalDal : EfEntityRepositoryBase<Rental, ReCapDBContext>, IRentalDal
     {
-        public List<RentalDetailDto> GetRentalDetails()
+        public List<RentalDetailDto> GetRentalDetails(Expression<Func<RentalDetailDto, bool>> filter = null)
         {
             using (ReCapDBContext context = new ReCapDBContext())
             {
                 var result = from r in context.Rentals
                              join c in context.Cars
-                             on r.CarId equals c.Id
-                             join u in context.Customers
-                             on r.CustomerId equals u.Id
+                                 on r.CarId equals c.Id
+                             join cu in context.Customers
+                                 on r.CustomerId equals cu.Id
+                             join u in context.Users
+                                 on cu.UserId equals u.Id
+                             join b in context.Brands
+                                 on c.BrandId equals b.Id
+                             join p in context.Payments
+                                 on r.PaymentId equals p.Id
                              select new RentalDetailDto
                              {
-                                 id = r.Id,
-                                 CarName = context.Brands.Where(x => x.Id == c.BrandId).Select(x => x.Name).First(),
-                                 CustomerName = context.Users.Where(x => x.Id == u.UserId).Select(x => x.FirstName).First(),
-                                 CustomerSurname = context.Users.Where(x => x.Id == u.UserId).Select(x => x.LastName).First(),
-                                 RentalDate = r.RentDate,
-                                 ReturnDate = r.ReturnDate
+                                 Id = r.Id,
+                                 CarId = c.Id,
+                                 ModelFullName = $"{b.Name} {c.Description}",
+                                 CustomerId = cu.Id,
+                                 CustomerFullName = $"{u.FirstName} {u.LastName}",
+                                 ReturnDate = r.ReturnDate,
+                                 DailyPrice = c.DailyPrice,
+                                 RentDate = r.RentDate,
+                                 PaymentId = r.PaymentId,
+                                 PaymentDate = p.PaymentDate,
+                                 DeliveryStatus = r.DeliveryStatus
                              };
-                return result.ToList();
+                return filter == null
+                    ? result.ToList()
+                    : result.Where(filter).ToList();
             }
+
         }
 
-
-        public bool isCarContent(int carId)
-        {
-            int _carId=0;
-            using (ReCapDBContext c = new ReCapDBContext())
-            {
-                _carId = c.Cars.Where(x => x.Id == carId).Select(x => x.Id).SingleOrDefault();
-            }
-            if (_carId > 0)
-                return true;
-            else
-                return false;
-        }
     }
 }

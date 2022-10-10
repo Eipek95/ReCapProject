@@ -35,7 +35,7 @@ export class CarimageService {
     return this.httpClient.post<ResponseModel>(newPath,sendForm);
   }
   deleteImage(carImage: Carimage): Observable<ResponseModel> {
-    let newPath = this.apiUrl + "api/carimages/delete";
+    let newPath = this.apiUrl+'/deleteimage'
     return this.httpClient.post<ResponseModel>(newPath, carImage);
   }
 

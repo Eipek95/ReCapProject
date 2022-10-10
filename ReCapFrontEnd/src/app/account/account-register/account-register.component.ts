@@ -9,7 +9,7 @@ import { ConfirmedValidator } from 'src/app/validators/confirmed.validator';
 @Component({
   selector: 'app-account-register',
   templateUrl: './account-register.component.html',
-  styleUrls: ['./account-register.component.css']
+  styleUrls: ['./account-register.component.css','../account-layout/account-layout.component.css']
 })
 export class AccountRegisterComponent implements OnInit {
   registerForn:FormGroup

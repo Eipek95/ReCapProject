@@ -2,8 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ChangePasswordModel } from '../models/changepassword';
 import { LoginModel } from '../models/login';
 import { Register } from '../models/register';
+import { ResponseModel } from '../models/responseModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
 import { TokenModel } from '../models/tokenModel';
 import { UserForLogin } from '../models/userForLogin';
@@ -96,8 +98,9 @@ export class AuthcustomserviceService {
     }
     return false;
   }
-  /*changePassword(updatedUser: ChangePasswordModel): Observable<ResponseModel> {
-    let newPath = this.apiURL + 'auth/changepassword';
+  changePassword(updatedUser: ChangePasswordModel): Observable<ResponseModel> {
+    let newPath = this.apiUrl + 'changepassword';
     return this.httpClient.post<ResponseModel>(newPath, updatedUser);
-  }*/
+  }
+  
 }

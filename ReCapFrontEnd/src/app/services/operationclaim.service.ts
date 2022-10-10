@@ -32,5 +32,4 @@ private apiUrl="https://localhost:7199/api"
   }
 }
 
-"/OperationClaim/getclaims"
-"https://localhost:7199/api/OperationClaim/addclaim"
+

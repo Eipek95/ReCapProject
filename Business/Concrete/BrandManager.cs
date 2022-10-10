@@ -25,6 +25,11 @@ namespace Business.Concrete
             return new Result(true,"Marka Başarıyla Eklendi");
         }
 
+        public IDataResult<List<Brand>> GetBrandById(int brandId)
+        {
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll().Where(x=>x.Id==brandId).ToList());
+        }
+
         public IDataResult<List<Brand>> GetBrands()
         {
             return new SuccessDataResult<List<Brand>>(_brandDal.GetAll().ToList());
@@ -34,6 +39,11 @@ namespace Business.Concrete
         {
             _brandDal.Update(brand);
             return new Result(true, "Marka Başarıyla Güncellendi");
+        }
+        public IResult Delete(Brand brand)
+        {
+            _brandDal.Delete(brand);
+            return new Result(true, "Marka Başarıyla Silindi");
         }
     }
 }
